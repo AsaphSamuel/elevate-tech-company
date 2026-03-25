@@ -1,4 +1,4 @@
-.container{
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,13 +14,13 @@
   max-height: 160px;
 }
 
-#arrow{
+#arrow {
   position: relative;
   height: 40px;
   margin-right: 80%;
   padding-bottom: 15px;
 }
-#arrow:hover{
+#arrow:hover {
   cursor: pointer;
 }
 
@@ -32,6 +32,39 @@
   border-radius: 50%;
   object-fit: cover;
   margin: 40px 0 20px;
+  transform: 0.3s;
+}
+.profile-image .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.profile-image:hover .overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.delete-icon {
+    position: absolute;
+    bottom: 33px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.profile-image:hover .delete-icon {
+    opacity: 1;
 }
 
 .profile-image img {
@@ -50,7 +83,7 @@
   max-height: 650px;
   gap: 35px;
 }
-.btn-login{ /*BOTÃO*/
+.btn-login { /*BOTÃO*/
     margin: 25px 0 0 0;
     width: calc(60% + 21px);
     height: 50px;
@@ -63,7 +96,7 @@
     letter-spacing: 1px;
     transition: 0.3s;
 }
-.lbl.logout{
+.lbl.logout {
   position: relative;
   margin-bottom: 30px;
 }

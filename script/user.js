@@ -16,7 +16,7 @@ function verifySession() {
 
 async function loopVerify() {
   await verifySession();
-  setTimeout(loop, 10000);
+  setTimeout(loopVerify, 10000);
 }
 
 loopVerify();
@@ -171,7 +171,7 @@ document.querySelector("#btn-sigin").addEventListener("click", async () => {
   }
 });
 
-document.querySelector("#profilePreview").addEventListener("click", async () => {
+document.querySelector("#pp-overlay").addEventListener("click", async () => {
   const profileImg = document.querySelector("#profilePreview");
 
   profileImg.src = "../images/default-user.png";
