@@ -1,0 +1,30 @@
+header{
+    min-width: 720px;
+}
+#user-container{
+    position: absolute;
+    z-index: maior;
+    display: flex;
+    width: 310px;
+    height: 50px;
+    align-items: center;
+    justify-content: end;
+    right: 50px;
+    gap: 20px;
+    cursor: pointer;
+}
+#username{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    size: auto;
+    color: #264f55;
+    cursor: pointer;
+}
+.default-user{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
