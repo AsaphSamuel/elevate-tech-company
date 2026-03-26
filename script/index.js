@@ -16,7 +16,7 @@ function verifySession() {
 
 async function loopVerify() {
   await verifySession();
-  setTimeout(loop, 10000);
+  setTimeout(loopVerify, 10000);
 }
 
 loopVerify();
