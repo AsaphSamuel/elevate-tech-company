@@ -1,21 +1,3 @@
-function verifySession() {
-  const session = JSON.parse(localStorage.getItem("session"));
-
-  if (session) {
-    window.location.href = "index.html";
-    return;
-  }
-
-  const agora = Date.now();
-
-  if (agora < session.expiresAt) {
-    localStorage.removeItem("session");
-    window.location.href = "index.html";
-  }
-}
-
-verifySession();
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
