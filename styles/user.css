@@ -1,9 +1,21 @@
-.container {
+.container{
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   flex-direction: column;
+}
+@media (max-aspect-ratio: 1/1) {
+  #arrow{
+    position: fixed;
+    top: 160px;
+    left: 30px;
+    z-index: 1;
+    filter: brightness(0) saturate(100%) invert(90%) sepia(10%) saturate(200%) hue-rotate(10deg);
+  }
+  .login-area{
+    max-height: 100%;
+  }
 }
 
 .profile-image {
@@ -14,76 +26,68 @@
   max-height: 160px;
 }
 
-#arrow {
-  position: relative;
+#arrow{
   height: 40px;
   margin-right: 80%;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
-#arrow:hover {
+#arrow:hover{
   cursor: pointer;
 }
-
-#profilePreview {
+/* container */
+.profile-image {
+  position: relative;
   width: 120px;
   height: 120px;
-  min-height: 120px;
-  min-width: 120px;
-  border-radius: 50%;
-  object-fit: cover;
   margin: 40px 0 20px;
-  transform: 0.3s;
-}
-.profile-image .overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    transition: opacity 0.3s;
 }
 
-.profile-image:hover .overlay {
-    opacity: 1;
-    cursor: pointer;
-}
-
-.delete-icon {
-    position: absolute;
-    bottom: 33px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 30px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-}
-
-.profile-image:hover .delete-icon {
-    opacity: 1;
-}
-
-.profile-image img {
-  width: 120px;
-  height: 120px;
+/* imagem */
+#profilePreview {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #354f52;
   box-sizing: border-box;
+  display: block;
+}
+
+/* overlay escuro */
+.overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+/* ícone */
+.trash-icon {
+  width: 28px;
+  height: 28px;
+  filter: brightness(130%);
+}
+
+/* hover no container */
+.profile-image:hover .overlay {
+  opacity: 1;
 }
 
 .profile-image input {
   margin-top: 10px;
 }
 .login-area{
-  max-height: 650px;
+  max-height: auto;
   gap: 35px;
 }
-.btn-login { /*BOTÃO*/
+.btn-login{ /*BOTÃO*/
     margin: 25px 0 0 0;
     width: calc(60% + 21px);
     height: 50px;
@@ -96,7 +100,7 @@
     letter-spacing: 1px;
     transition: 0.3s;
 }
-.lbl.logout {
+.lbl.logout{
   position: relative;
   margin-bottom: 30px;
 }
