@@ -12,12 +12,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDUZH2lq3TMQB2GBMpkbXq2J5iuBRWu4_g",
-  authDomain: "elevate-tech-co.firebaseapp.com",
-  projectId: "elevate-tech-co",
-  storageBucket: "elevate-tech-co.firebasestorage.app",
-  messagingSenderId: "492241667071",
-  appId: "1:492241667071:web:168f43a74c0eff0ca85dca"
+  apiKey: "AIzaSyBknhPHD2jXaMMVH4Nq3uJnc8uuiKs37H4",
+  authDomain: "elevate-tech-company.firebaseapp.com",
+  databaseURL: "https://elevate-tech-company-default-rtdb.firebaseio.com",
+  projectId: "elevate-tech-company",
+  storageBucket: "elevate-tech-company.firebasestorage.app",
+  messagingSenderId: "5988059403",
+  appId: "1:5988059403:web:09e916e312b9c47939fa0e"
 };
 
 const app = initializeApp(firebaseConfig);
