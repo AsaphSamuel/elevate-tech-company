@@ -4,6 +4,7 @@
   justify-content: center;
   height: 100%;
   flex-direction: column;
+  padding-top: 160px;
 }
 @media (max-aspect-ratio: 1/1) {
   #arrow{

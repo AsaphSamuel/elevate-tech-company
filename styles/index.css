@@ -1,6 +1,5 @@
 #user-container{
     position: absolute;
-    z-index: maior;
     display: flex;
     width: 310px;
     height: 50px;
@@ -34,18 +33,22 @@
     object-position: center;
 }
 .home-container{
-    position: absolute;
-    top: 160px;
-    width: 90%;
-    max-width: 1200px;
-    height: calc(100% - 160px);
-    overflow-y: auto;
+    padding-top: 160px;
+    width: 100%;
+    overflow-y: hidden;
+}
+.about-us.container {
+    background-color: #264f55;
+    width: 100%;
+    height: 500px;
 }
 
 /* HERO */
 .hero{
     text-align: center;
     margin-bottom: 40px;
+    padding-left: 250px;
+    padding-right: 250px;
 }
 
 .hero-title{
@@ -74,12 +77,19 @@
     transform: scale(1.05);
 }
 
+.templates-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 /* SECTION */
 .section-title{
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
     color: #264f55;
     margin-bottom: 20px;
+    width: 950px;
 }
 
 /* GRID */
