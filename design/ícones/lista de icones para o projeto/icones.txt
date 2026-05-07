@@ -1,0 +1,76 @@
+
+
+monitor — ícone de monitor/computador (Sites Personalizados)
+
+
+shopping-cart — ícone de carrinho (Lojas Online)
+
+
+device-mobile ou smartphone — ícone de celular (Sistemas Web)
+
+
+lightning ou lightning-fill — ícone de raio (Sites rápidos e modernos)
+
+
+shield-check — ícone de escudo (Design responsivo e intuitivo)
+
+
+chart-bar ou chart-line-up — ícone de gráfico (Focados em resultados)
+
+
+rocket-launch — ícone de foguete (CTA elevar negócio)
+
+
+map-pin — ícone de localização
+
+
+phone — ícone de telefone
+
+
+envelope-simple — ícone de e-mail
+
+
+instagram-logo — ícone Instagram
+
+
+linkedin-logo — ícone LinkedIn
+
+
+whatsapp-logo — ícone WhatsApp
+
+
+arrow-up-right — usado na logo/identidade visual da Elevate Co.
+
+
+caret-right — setas dos botões/carrossel
+
+
+dots-three-outline ou circle — indicadores do carrossel
+
+
+globe — opcional para representar sites e presença digital
+
+
+layout ou browser — opcional para UI/web design
+
+
+code — opcional para desenvolvimento
+
+
+devices — opcional para responsividade multi-dispositivo
+
+
+palette — opcional para design/UI UX
+
+
+
+
+
+<i class="ph ph-monitor"></i> #118ca5
+<i class="ph ph-shopping-cart"></i>
+<i class="ph-light ph-device-mobile-camera"></i>
+<i class="ph-fill ph-lightning"></i>
+<i class="ph-light ph-shield-check"></i>
+<i class="ph-fill ph-chart-bar"></i>
+<i class="ph-light ph-rocket-launch"></i>
+<i class="ph-light ph-map-pin"></i>
