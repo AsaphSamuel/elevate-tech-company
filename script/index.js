@@ -103,3 +103,20 @@ async function loadUserIcon() {
 }
 
 loadUserIcon();
+
+//SCROLL INDICATOR
+const indicator = document.querySelector('.scroll-indicator');
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    const nearBottom = scrollTop + windowHeight >= documentHeight - 320;
+
+    if (nearBottom) {
+        indicator.classList.add('hidden');
+    } else {
+        indicator.classList.remove('hidden');
+    }
+});
