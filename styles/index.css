@@ -10,11 +10,49 @@
     cursor: pointer;
 }
 
+@media (max-width: 810px){
+    .about-us.container {
+        height: auto;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 811px){
+    .about-us.container {
+        height: 500px;
+    }
+}
+
 @media (max-width: 695px) {
-  #user-container {
-    position: fixed;
-    top: 160px;
-  }
+    #user-container {
+        position: fixed;
+        top: 160px;
+    }
+    .home-container {
+        padding-top: 210px;
+    }
+    .footer-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer-column {
+        width: calc(100% - 160px);
+    }
+    .footer-column.logo {
+        width: auto;
+        position: fixed;
+        left: 40px;
+    }
+}
+@media (min-width: 696px) {
+    .home-container {
+        padding-top: 160px;
+    }
+    .footer-container {    
+        justify-content: space-between;
+        align-items: flex-start;
+    }
 }
 
 #username{
@@ -33,7 +71,6 @@
     object-position: center;
 }
 .home-container{
-    padding-top: 160px;
     width: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -43,7 +80,6 @@
     background-color: #264f55;
     padding-top: 0px;
     width: 100%;
-    height: 500px;
 }
 
 .about-us.part {
@@ -61,10 +97,11 @@
 
 /* HERO */
 .hero{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
     margin-bottom: 40px;
-    padding-left: 250px;
-    padding-right: 250px;
 }
 
 .hero-title{
@@ -255,8 +292,6 @@ footer {
     margin: 0 auto;
     padding-left: 180px;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     gap: 40px;
     color: #ebe7e0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
