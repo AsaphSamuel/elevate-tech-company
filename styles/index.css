@@ -1,12 +1,18 @@
+body {
+    overflow-x: hidden;
+    min-width: 100%;
+}
+
 #user-container{
     position: absolute;
     display: flex;
-    width: 310px;
     height: 50px;
+    padding: 0 10px;
+    border-radius: 30px;
     align-items: center;
     justify-content: end;
     right: 50px;
-    gap: 20px;
+    gap: 10px;
     cursor: pointer;
 }
 
@@ -19,7 +25,7 @@
 
 @media (min-width: 811px){
     .about-us.container {
-        height: 500px;
+        height: 600px;
     }
 }
 
@@ -27,6 +33,9 @@
     #user-container {
         position: fixed;
         top: 160px;
+        right: 10%;
+        background-color: #264f55;
+        color: #ebe7e0;
     }
     .home-container {
         padding-top: 210px;
@@ -35,6 +44,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding-left: 0;
     }
     .footer-column {
         width: calc(100% - 160px);
@@ -46,6 +56,10 @@
     }
 }
 @media (min-width: 696px) {
+    #user-container {
+        color: #264f55;
+    }
+
     .home-container {
         padding-top: 160px;
     }
@@ -59,7 +73,6 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     size: auto;
-    color: #264f55;
     cursor: pointer;
 }
 .default-user{
@@ -150,7 +163,8 @@
     padding-left: 20px;
     color: #264f55;
     margin-bottom: 20px;
-    width: 1250px;
+    width: 100%;
+    max-width: 1250px;
 }
 
 /* GRID */
@@ -164,7 +178,8 @@
 
 /* CARD */
 .template-card{
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     background-color: #ebe7e0;
     border-radius: 15px;
     overflow: hidden;

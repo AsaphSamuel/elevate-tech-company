@@ -112,7 +112,7 @@ window.addEventListener('scroll', () => {
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
 
-    const nearBottom = scrollTop + windowHeight >= documentHeight - 820;
+    const nearBottom = scrollTop + windowHeight >= documentHeight - 700;
 
     if (nearBottom) {
         indicator.classList.add('hidden');
