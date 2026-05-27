@@ -19,8 +19,7 @@ header{
     align-items: center;
     background-color: rgb(230, 221, 206);
     width: 100%;
-    height: 15%;
-    min-height: 140px;
+    height: 142px;
     z-index: 1;
 }
 img.header-logo{
