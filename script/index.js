@@ -104,6 +104,55 @@ async function loadUserIcon() {
 
 loadUserIcon();
 
+//CARROSSEL MOSTRUARIO
+
+const track = document.querySelector('.templates-grid');
+const cards = document.querySelectorAll('.template-card');
+
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+
+let currentIndex = 0;
+
+const visibleCards = 3;
+
+const gap = 25;
+
+const cardWidth = cards[0].offsetWidth + gap;
+
+const maxIndex = cards.length - visibleCards;
+
+nextBtn.addEventListener('click', () => {
+
+    if(currentIndex < maxIndex){
+
+        currentIndex++;
+
+        updateCarousel();
+
+    }
+
+});
+
+prevBtn.addEventListener('click', () => {
+
+    if(currentIndex > 0){
+
+        currentIndex--;
+
+        updateCarousel();
+
+    }
+
+});
+
+function updateCarousel(){
+
+    track.style.transform =
+        `translateX(-${currentIndex * cardWidth}px)`;
+
+}
+
 //SCROLL INDICATOR
 const indicator = document.querySelector('.scroll-indicator');
 
