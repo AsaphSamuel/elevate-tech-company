@@ -1,3 +1,11 @@
+*{
+  box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: clip;
+}
 .container{
   display: flex;
   align-items: center;
@@ -16,8 +24,14 @@
   }
   .login-area{
     max-height: 100%;
+    margin-top: 0;
   }
 }
+@media (min-aspect-ratio: 1/1) {
+  .login-area {
+    margin-top: 100px;
+  }
+} 
 
 .profile-image {
   position: relative;
@@ -88,7 +102,6 @@
   margin-top: 10px;
 }
 .login-area{
-  margin-top: 100px;
   max-height: auto;
   gap: 35px;
 }

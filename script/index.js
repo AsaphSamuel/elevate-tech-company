@@ -109,8 +109,8 @@ loadUserIcon();
 const track = document.querySelector('.templates-grid');
 const cards = document.querySelectorAll('.template-card');
 
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev2');
+const nextBtn = document.querySelector('.next2');
 
 let currentIndex = 0;
 

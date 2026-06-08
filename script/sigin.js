@@ -123,3 +123,62 @@ document.querySelector("#btn-sigin").addEventListener("click", async () => {
     }
 });
 
+document.querySelector("#registerForm").addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const user = document.querySelector("#user")?.value?.toLowerCase().trim() || "";
+    const email_cad = document.querySelector("#email")?.value?.trim() || "";
+    const pass = document.querySelector("#pass")?.value || "";
+
+    const msg = document.querySelector("#lbl-error");
+
+    msg.innerText = "";
+
+    // VALIDAÇÃO
+    if (user === "") {
+        document.querySelector("#user").placeholder = "Preencha esse campo!";
+    }
+
+    if (email_cad === "") {
+        document.querySelector("#email").placeholder = "Preencha esse campo!";
+    }
+
+    if (pass === "") {
+        document.querySelector("#pass").placeholder = "Preencha esse campo!";
+    }
+
+    if (user === "" || email_cad === "" || pass === "") {
+        return;
+    }
+
+    try {
+
+        const nomeExiste = await existeNome(user);
+        const emailExiste = await existeEmail(email_cad);
+
+        if (nomeExiste) {
+            msg.innerText = `Já existe um usuário com o nome ${user}`;
+            return;
+        }
+
+        if (emailExiste) {
+            msg.innerText = "Já existe um usuário com este email.";
+            return;
+        }
+
+        await cadastrar(user, email_cad, pass);
+
+        console.log("Usuário criado:", user, email_cad);
+
+        window.location.href = "login.html";
+
+    } catch (error) {
+
+        console.error(error);
+
+        msg.innerText = "Erro ao tentar cadastrar usuário. Tente novamente.";
+
+    }
+
+});
