@@ -21,12 +21,6 @@ a {
     cursor: pointer;
 }
 
-/*HEADER*/
-.header-logo {
-    position: absolute;
-    left: 2%;
-}
-
 .navbar {
     display: flex;
     gap: 60px;
@@ -84,6 +78,10 @@ a {
     }
     header {
         height: 225px;
+        gap: 60px;
+    }
+    .header-logo {
+        position: absolute;
     }
     .navbar {
         padding-top: 170px;
@@ -94,6 +92,10 @@ a {
     .about-us.container {
         height: 600px;
     }
+    .header-logo {
+        position: absolute;
+        left: 5%;
+    }
 }
 
 @media (max-width: 695px) {
@@ -102,6 +104,10 @@ a {
         right: 10%;
         background-color: #264f55;
         color: #ebe7e0;
+    }
+    .header-logo {
+        position: absolute;
+        left: 5%;
     }
     .footer-container {
         flex-direction: column;
