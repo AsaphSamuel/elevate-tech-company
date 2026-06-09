@@ -185,7 +185,7 @@ document.querySelector("#arrow").addEventListener("click", async () => {
   const session = JSON.parse(localStorage.getItem("session"));
 
   localStorage.setItem("session", JSON.stringify(session));
-  location.href = "index.html";
+  history.back();
 });
 
 document.querySelector("#logout").addEventListener("click", async () => {
