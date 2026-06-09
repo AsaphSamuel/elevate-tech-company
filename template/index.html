@@ -15,20 +15,76 @@
 
         <img class="img header-logo"  src="../images/ideograma-png.png" alt="ideograma-png">
 
-        <div id="user-container">
+        <div class="navbar">
+            <ul class="navbar-text active" data-target="home">HOME</ul>
+            <ul class="navbar-text" data-target="about">ABOUT US</ul>
+            <ul class="navbar-text" data-target="store">STORE</ul>
+        </div>
 
+        <!--USER-CONTAINER-->
+        <div id="user-container">
             <h1 id="username">Loading User</h1>
 
             <img id="userIcon" class="default-user" src="../images/default-user.png" alt="profile image">
-
         </div>
 
     </header>
 
     <main class="home-container">
 
+        <!-- CARROSSEL -->
+        <section class="galery-hero-carousel" id="home">
+            <div class="galery-carousel-track">
+
+                <!-- SLIDE 1 -->
+                <div class="galery-carousel-slide active">
+                    <img src="../images/crs-joao.png" alt="">
+                </div>
+
+                <!-- SLIDE 2 -->
+                <div class="galery-carousel-slide">
+                    <img src="../images/crs-ludmel.jpg" alt="">
+                </div>
+
+                <!-- SLIDE 3 -->
+                <div class="galery-carousel-slide">
+                    <img src="../images/crs-joao.png" alt="">
+                </div>
+
+                <!-- SLIDE 4 -->
+                <div class="galery-carousel-slide">
+                    <img src="../images/crs-ludmel.jpg" alt="">
+                </div>
+
+                <!-- SLIDE 5 -->
+                <div class="galery-carousel-slide">
+                    <img src="../images/crs-joao.png" alt="">
+                </div>
+
+            </div>
+
+            <!-- CONTROLES -->
+            <div class="galery-carousel-controls">
+
+                <button class="galery-carousel-btn prev">
+                    &#10094;
+                </button>
+
+                <span class="galery-carousel-counter">
+                    <span id="galery-current-slide">1</span>
+                    de
+                    <span id="galery-total-slides">5</span>
+                </span>
+
+                <button class="galery-carousel-btn next">
+                    &#10095;
+                </button>
+
+            </div>
+        </section>
+
         <!-- HERO -->
-        <section class="hero">
+        <section class="hero" id="about">
             <h1 class="hero-title">Sites que elevam o seu negócio</h1>
             <p class="hero-subtitle">
                 Design moderno, alta performance e foco em conversão.
@@ -51,39 +107,74 @@
             <div class="section-title-div">
                 <h2 class="section-title">Nossos Modelos</h2>
             </div>
-            <div class="templates-grid">
 
-                <!-- TEMPLATE 1 -->
-                <div class="template-card">
-                    <img src="../images/site-empresa-img.webp" alt="template" class="template-img empresa">
-                    <div class="template-info">
-                        <h3>Site Empresarial</h3>
-                        <p>Ideal para empresas e serviços</p>
-                        <button>Visualizar</button>
+            <!-- BOTÕES -->
+            <button class="carousel-btn prev2">&#10094;</button>
+            <button class="carousel-btn next2">&#10095;</button>
+            <div class="carousel-wrapper">
+                <div class="templates-grid">
+
+                    <!-- TEMPLATE 1 -->
+                    <div class="template-card">
+                        <img src="../images/site-empresa-img.webp" alt="template" class="template-img empresa">
+                        <div class="template-info">
+                            <h3>Site Empresarial</h3>
+                            <p>Ideal para empresas e serviços</p>
+                            <button>Visualizar</button>
+                        </div>
+                    </div>
+
+                    <!-- TEMPLATE 2 -->
+                    <div class="template-card">
+                        <img src="../images/site-landingpage-img.png" alt="template" class="template-img landing">
+                        <div class="template-info">
+                            <h3>Landing Page</h3>
+                            <p>Alta conversão para vendas</p>
+                            <button>Visualizar</button>
+                        </div>
+                    </div>
+
+                    <!-- TEMPLATE 3 -->
+                    <div class="template-card">
+                        <img src="../images/site-portifolio-img.png" alt="template" class="template-img portifolio">
+                        <div class="template-info">
+                            <h3>Portfólio</h3>
+                            <p>Perfeito para profissionais</p>
+                            <button>Visualizar</button>
+                        </div>
+                    </div>
+                    <!-- TEMPLATE 1 -->
+                    <div class="template-card">
+                        <img src="../images/site-empresa-img.webp" alt="template" class="template-img empresa">
+                        <div class="template-info">
+                            <h3>Site Empresarial</h3>
+                            <p>Ideal para empresas e serviços</p>
+                            <button>Visualizar</button>
+                        </div>
+                    </div>
+
+                    <!-- TEMPLATE 2 -->
+                    <div class="template-card">
+                        <img src="../images/site-landingpage-img.png" alt="template" class="template-img landing">
+                        <div class="template-info">
+                            <h3>Landing Page</h3>
+                            <p>Alta conversão para vendas</p>
+                            <button>Visualizar</button>
+                        </div>
+                    </div>
+
+                    <!-- TEMPLATE 3 -->
+                    <div class="template-card">
+                        <img src="../images/site-portifolio-img.png" alt="template" class="template-img portifolio">
+                        <div class="template-info">
+                            <h3>Portfólio</h3>
+                            <p>Perfeito para profissionais</p>
+                            <button>Visualizar</button>
+                        </div>
                     </div>
                 </div>
-
-                <!-- TEMPLATE 2 -->
-                <div class="template-card">
-                    <img src="../images/site-landingpage-img.png" alt="template" class="template-img landing">
-                    <div class="template-info">
-                        <h3>Landing Page</h3>
-                        <p>Alta conversão para vendas</p>
-                        <button>Visualizar</button>
-                    </div>
-                </div>
-
-                <!-- TEMPLATE 3 -->
-                <div class="template-card">
-                    <img src="../images/site-portifolio-img.png" alt="template" class="template-img portifolio">
-                    <div class="template-info">
-                        <h3>Portfólio</h3>
-                        <p>Perfeito para profissionais</p>
-                        <button>Visualizar</button>
-                    </div>
-                </div>
-
             </div>
+            
 
         </section>
 

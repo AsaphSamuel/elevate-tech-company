@@ -1,13 +1,74 @@
+body {
+    overflow-x: hidden;
+    min-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 #user-container{
     position: absolute;
     display: flex;
-    width: 310px;
     height: 50px;
+    padding: 0 10px;
+    border-radius: 30px;
     align-items: center;
     justify-content: end;
     right: 50px;
-    gap: 20px;
+    gap: 10px;
     cursor: pointer;
+}
+
+.navbar {
+    display: flex;
+    gap: 60px;
+
+    padding-top: 15px;
+}
+
+.navbar-text {
+    position: relative;
+    color: #123944;
+    cursor: pointer;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* underline (hidden by default) */
+.navbar-text::after {
+    content: "";
+    position: absolute;
+    left: 18px;
+    bottom: -4px;
+
+    width: 0%;
+    height: 2px;
+
+    background: #123944;
+
+    transition: width 0.3s ease;
+}
+
+/* active state */
+.navbar-text.active::after {
+    width: 100%;
+}
+
+
+@media (max-aspect-ratio: 1/1) {
+    header {
+        position: relative;
+    }
+    .home-container {
+        padding-top: 0;
+    }
+}
+@media (min-aspect-ratio: 1/1) {
+    .home-container {
+        padding-top: 142px;
+    }
 }
 
 @media (max-width: 810px){
@@ -15,26 +76,44 @@
         height: auto;
         flex-direction: column;
     }
+    header {
+        height: 225px;
+        gap: 60px;
+    }
+    .header-logo {
+        position: absolute;
+    }
+    .navbar {
+        padding-top: 170px;
+    }
 }
 
 @media (min-width: 811px){
     .about-us.container {
-        height: 500px;
+        height: 600px;
+    }
+    .header-logo {
+        position: absolute;
+        left: 5%;
     }
 }
 
 @media (max-width: 695px) {
     #user-container {
         position: fixed;
-        top: 160px;
+        right: 10%;
+        background-color: #264f55;
+        color: #ebe7e0;
     }
-    .home-container {
-        padding-top: 210px;
+    .header-logo {
+        position: absolute;
+        left: 5%;
     }
     .footer-container {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding-left: 0;
     }
     .footer-column {
         width: calc(100% - 160px);
@@ -46,12 +125,14 @@
     }
 }
 @media (min-width: 696px) {
-    .home-container {
-        padding-top: 160px;
+    #user-container {
+        color: #264f55;
     }
     .footer-container {    
         justify-content: space-between;
         align-items: flex-start;
+        
+        padding-left: 0;
     }
 }
 
@@ -59,7 +140,6 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     size: auto;
-    color: #264f55;
     cursor: pointer;
 }
 .default-user{
@@ -76,6 +156,138 @@
     overflow-x: hidden;
     padding-bottom: 120px;
 }
+
+/* =========================
+   HERO CAROUSEL
+========================= */
+
+.galery-hero-carousel{
+    position: relative;
+
+    width: 100%;
+    height: 700px;
+
+    overflow: hidden;
+
+    background: #123944;
+}
+
+/* =========================
+   TRACK
+========================= */
+
+.galery-carousel-track{
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+
+    transition: transform .6s ease-in-out;
+}
+
+/* =========================
+   SLIDES
+========================= */
+
+.galery-carousel-slide{
+    min-width: 100%;
+    height: 100%;
+
+    flex-shrink: 0;
+}
+
+.galery-carousel-slide img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+}
+
+/* =========================
+   CONTROLES
+========================= */
+
+.galery-carousel-controls{
+    position: absolute;
+
+    left: 50%;
+    bottom: 40px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    padding: 8px 12px;
+
+    border-radius: 50px;
+
+    background: rgba(31,76,87,.95);
+
+    z-index: 20;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+
+.galery-carousel-btn{
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+
+    color: #1f4c57;
+
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transition: .3s;
+}
+
+.galery-carousel-btn:hover{
+    transform: scale(1.08);
+}
+
+/* =========================
+   CONTADOR
+========================= */
+
+.galery-carousel-counter{
+    color: white;
+
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1024px){
+
+    .galery-hero-carousel{
+        height: 500px;
+    }
+
+    .galery-carousel-controls{
+        gap: 20px;
+        bottom: 25px;
+    }
+
+}
+
+/* =========================
+   ABOUTUS
+========================= */
+
 .about-us.container {
     background-color: #264f55;
     padding-top: 0px;
@@ -129,96 +341,288 @@
 .cta-button:hover{
     transform: scale(1.05);
 }
+/* =========================
+   SECTION
+========================= */
 
 .templates-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* SECTION */
-.section-title-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
 }
 
-.section-title{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
-    padding-left: 20px;
-    color: #264f55;
-    margin-bottom: 20px;
-    width: 1250px;
-}
+/* =========================
+   TITLE
+========================= */
 
-/* GRID */
-.templates-grid{
-    font-family: 'Montserrat', sans-serif;
+.section-title-div {
+    width: 100%;
     display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
     justify-content: center;
 }
 
-/* CARD */
-.template-card{
-    width: 400px;
-    background-color: #ebe7e0;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 1px 1px 30px -10px rgba(0,0,0,0.4);
-    transition: 0.3s;
+.section-title {
+    width: 100%;
+    max-width: 1600px;
+
+    padding: 0 20px;
+    margin-bottom: 25px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    color: #264f55;
 }
 
-.template-card:hover{
+/* =========================
+   WRAPPER
+========================= */
+
+.carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+
+    padding: 0 150px;
+
+    box-sizing: border-box;
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 3%,
+        black 97%,
+        transparent 100%
+    );
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 3%,
+        black 97%,
+        transparent 100%
+    );
+}
+
+/* =========================
+   GRID
+========================= */
+
+.templates-grid {
+    display: flex;
+    gap: 24px;
+
+    transition: transform 0.5s ease;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.template-card {
+    flex: 0 0 clamp(260px, 30vw, 400px);
+
+    background-color: #ebe7e0;
+
+    border-radius: 16px;
+    overflow: hidden;
+
+    box-shadow: 1px 1px 30px -10px rgba(0,0,0,0.2);
+
+    transition: transform 0.3s ease;
+}
+
+.template-card:hover {
     transform: translateY(-5px);
 }
 
-.template-card img{
+.template-card img {
     width: 100%;
-    height: 180px;
+    height: 220px;
+
     object-fit: cover;
+    display: block;
 }
 
-.template-img.landing,.template-img.portifolio {
-    transform: scale(1.2);
+.template-img.landing,
+.template-img.portifolio {
+    transform: scale(1.1);
 }
 
-/* INFO */
-.template-info{
-    padding: 15px;
+/* =========================
+   INFO
+========================= */
+
+.template-info {
+    padding: 18px;
     text-align: center;
+
+    font-family: 'Montserrat', sans-serif;
 }
 
-.template-info h3{
-    width: 100%;
+.template-info h3 {
     color: #264f55;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    font-size: 1.2rem;
 }
 
-.template-info p{
+.template-info p {
     color: #354f52;
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
 }
 
-.template-info button{
-    padding: 8px 15px;
-    border-radius: 8px;
+.template-info button {
+    padding: 10px 18px;
+
     border: none;
+    border-radius: 8px;
+
     background-color: #264f55;
     color: white;
+
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
+.template-info button:hover {
+    background-color: #1d4f59;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.carousel-btn {
+    position: absolute;
+    top: calc(50% + 40px);
+
+    transform: translateY(-50%);
+
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    border-radius: 50%;
+
+    padding-bottom: 4px;
+
+    background: #1d4f59;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+    transition: 0.2s;
+}
+
+.carousel-btn:hover {
+    background: white;
+    color: #1d4f59;
+}
+
+.carousel-btn.prev2 {
+    left: 82px;
+    padding-right: 8px;
+}
+
+.carousel-btn.next2 {
+    right: 82px;
+    
+    padding-left: 8px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 992px) {
+
+    .carousel-wrapper {
+        padding: 0 40px;
+    }
+
+    .template-card {
+        flex: 0 0 320px;
+    }
+
+    .template-card img {
+        height: 200px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .carousel-wrapper {
+        padding: 0 20px;
+
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+
+    .templates-grid {
+        gap: 16px;
+    }
+
+    .template-card {
+        flex: 0 0 85%;
+    }
+
+    .template-card img {
+        height: 180px;
+    }
+
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    .template-card {
+        flex: 0 0 92%;
+    }
+
+    .template-info {
+        padding: 15px;
+    }
+
+    .template-info h3 {
+        font-size: 1rem;
+    }
+
+    .template-info p {
+        font-size: 0.85rem;
+    }
+
+    .template-info button {
+        width: 100%;
+    }
+}
 .scroll-indicator {
     width: 35px;
     height: 35px;
 
-    border: 2px solid white;
     border-radius: 50%;
+
+    margin: 5px;
+    background: #1d4f59;
 
     display: flex;
     align-items: center;
@@ -278,8 +682,7 @@ footer {
 
 
 .footer-column.logo {
-    position: absolute;
-    left: 20px;
+    position: static;
 
     padding: 30px 0;
     display: flex;
@@ -287,10 +690,13 @@ footer {
     justify-content: center;
 }
 
+.footer-column {
+    width: 300px;
+}
+
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding-left: 180px;
     display: flex;
     gap: 40px;
     color: #ebe7e0;
@@ -331,6 +737,12 @@ footer {
 
 .footer-column p {
     margin-bottom: 12px;
+}
+
+.footer-column p,
+.footer-column a {
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .redes-sociais {

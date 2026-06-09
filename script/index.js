@@ -104,19 +104,265 @@ async function loadUserIcon() {
 
 loadUserIcon();
 
+//NAVBAR
+//SCROLL NAVBAR
+let ignoreScroll = false;
+
+function scrollToSection(id) {
+
+    const section = document.getElementById(id);
+
+    if (!section) return;
+
+    section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+
+}
+const links = document.querySelectorAll('.navbar-text');
+
+links.forEach(link => {
+  link.addEventListener('click', (event) => {
+
+    event.preventDefault();
+
+    // REMOVE .active DE TODOS
+    links.forEach(item => item.classList.remove('active'));
+
+    // ADICIONA .active PARA O CLICADO
+    link.classList.add('active');
+
+    console.log('Clicked:', link.textContent);
+
+    const targetId = link.dataset.target;
+
+    // disable scroll spy temporarily
+    ignoreScroll = true;
+
+    scrollToSection(targetId);
+
+    // re-enable after scroll finishes
+    setTimeout(() => {
+      ignoreScroll = false;
+    }, 800); // match your scroll speed
+  });
+});
+
+window.addEventListener('load', () => {
+
+  const hash = window.location.hash.replace('#', '');
+
+  if (hash) {
+    scrollToSection(hash);
+  }
+
+});
+
+//CHANGES NAVBAR BY SCROLLPAGE
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+
+  if (ignoreScroll) return;
+
+  let current = '';
+
+  sections.forEach(section => {
+
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+
+    if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+      current = section.getAttribute('id');
+    }
+
+  });
+
+  links.forEach(link => {
+
+    link.classList.remove('active');
+
+    if (link.dataset.target === current) {
+      link.classList.add('active');
+    }
+
+  });
+
+});
+
+//CARROSSEL HERO
+document.addEventListener('DOMContentLoaded', () => {
+
+  const track = document.querySelector('.galery-carousel-track');
+  const slides = document.querySelectorAll('.galery-carousel-slide');
+
+  const prevBtn = document.querySelector('.galery-carousel-btn.prev');
+  const nextBtn = document.querySelector('.galery-carousel-btn.next');
+
+  const currentSlide = document.getElementById('galery-current-slide');
+  const totalSlides = document.getElementById('galery-total-slides');
+
+  let index = 0;
+  let autoPlay;
+
+  totalSlides.textContent = slides.length;
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    currentSlide.textContent = index + 1;
+  }
+
+  function startAutoPlay() {
+
+    autoPlay = setInterval(() => {
+
+      index++;
+
+      if (index >= slides.length) {
+        index = 0;
+      }
+
+      updateCarousel();
+
+    }, 5000);
+
+  }
+
+  function resetAutoPlay() {
+
+    clearInterval(autoPlay);
+    startAutoPlay();
+
+  }
+
+  nextBtn.addEventListener('click', () => {
+
+    index++;
+
+    if (index >= slides.length) {
+      index = 0;
+    }
+
+    updateCarousel();
+    resetAutoPlay();
+
+  });
+
+  prevBtn.addEventListener('click', () => {
+
+    index--;
+
+    if (index < 0) {
+      index = slides.length - 1;
+    }
+
+    updateCarousel();
+    resetAutoPlay();
+
+  });
+
+  // Swipe para celular
+  let startX = 0;
+  let endX = 0;
+
+  track.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  track.addEventListener('touchend', (e) => {
+
+    endX = e.changedTouches[0].clientX;
+
+    const distance = startX - endX;
+
+    if (distance > 50) {
+
+      index++;
+
+      if (index >= slides.length) {
+        index = 0;
+      }
+
+    } else if (distance < -50) {
+
+      index--;
+
+      if (index < 0) {
+        index = slides.length - 1;
+      }
+    }
+
+    updateCarousel();
+    resetAutoPlay();
+
+  });
+
+  updateCarousel();
+  startAutoPlay();
+});
+
+//CARROSSEL MOSTRUARIO
+const track = document.querySelector('.templates-grid');
+const cards = document.querySelectorAll('.template-card');
+
+const prevBtn = document.querySelector('.prev2');
+const nextBtn = document.querySelector('.next2');
+
+let currentIndex = 0;
+
+const visibleCards = 3;
+
+const gap = 25;
+
+const cardWidth = cards[0].offsetWidth + gap;
+
+const maxIndex = cards.length - visibleCards;
+
+nextBtn.addEventListener('click', () => {
+
+  if(currentIndex < maxIndex){
+
+    currentIndex++;
+
+    updateCarousel();
+
+  }
+
+});
+
+prevBtn.addEventListener('click', () => {
+
+  if(currentIndex > 0){
+
+    currentIndex--;
+
+    updateCarousel();
+
+  }
+
+});
+
+function updateCarousel(){
+
+  track.style.transform =
+    `translateX(-${currentIndex * cardWidth}px)`;
+
+}
+
 //SCROLL INDICATOR
 const indicator = document.querySelector('.scroll-indicator');
 
 window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
+  const scrollTop = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
 
-    const nearBottom = scrollTop + windowHeight >= documentHeight - 820;
+  const nearBottom = scrollTop + windowHeight >= documentHeight - 700;
 
-    if (nearBottom) {
-        indicator.classList.add('hidden');
-    } else {
-        indicator.classList.remove('hidden');
-    }
+  if (nearBottom) {
+    indicator.classList.add('hidden');
+  } else {
+    indicator.classList.remove('hidden');
+  }
 });
