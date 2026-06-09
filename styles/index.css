@@ -67,12 +67,26 @@ a {
     header {
         position: relative;
     }
+    .home-container {
+        padding-top: 0;
+    }
+}
+@media (min-aspect-ratio: 1/1) {
+    .home-container {
+        padding-top: 142px;
+    }
 }
 
 @media (max-width: 810px){
     .about-us.container {
         height: auto;
         flex-direction: column;
+    }
+    header {
+        height: 225px;
+    }
+    .navbar {
+        padding-top: 170px;
     }
 }
 
@@ -84,14 +98,10 @@ a {
 
 @media (max-width: 695px) {
     #user-container {
-        position: absolute;
-        top: 160px;
+        position: fixed;
         right: 10%;
         background-color: #264f55;
         color: #ebe7e0;
-    }
-    .home-container {
-        padding-top: 210px;
     }
     .footer-container {
         flex-direction: column;
@@ -111,10 +121,6 @@ a {
 @media (min-width: 696px) {
     #user-container {
         color: #264f55;
-    }
-
-    .home-container {
-        padding-top: 142px;
     }
     .footer-container {    
         justify-content: space-between;
