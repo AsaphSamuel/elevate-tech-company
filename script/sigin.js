@@ -110,7 +110,7 @@ document.querySelector("#btn-sigin").addEventListener("click", async () => {
                 msg.innerText = "Erro ao tentar cadastrar usuário, Tente novamente.";
             }
         }
-        if(await existeNome(user)) {
+        if(existeNome(user)) {
             const msg = document.querySelector("#lbl-error");
             
             msg.innerText = `Já existe um usuário com o nome ${user}`;
