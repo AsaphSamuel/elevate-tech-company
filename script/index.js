@@ -106,6 +106,8 @@ loadUserIcon();
 
 //NAVBAR
 //SCROLL NAVBAR
+let ignoreScroll = false;
+
 function scrollToSection(id) {
 
     const section = document.getElementById(id);
@@ -133,28 +135,59 @@ links.forEach(link => {
 
     console.log('Clicked:', link.textContent);
 
-    //scroll aplied
     const targetId = link.dataset.target;
-      const currentPage = window.location.pathname;
 
-      // If NOT on index.html, redirect first
-      if (!currentPage.endsWith('index.html') && currentPage !== '/' && currentPage !== '') {
+    // disable scroll spy temporarily
+    ignoreScroll = true;
 
-        window.location.href = `index.html#${targetId}`;
-        return;
-      }
+    scrollToSection(targetId);
 
-      scrollToSection(targetId);
+    // re-enable after scroll finishes
+    setTimeout(() => {
+      ignoreScroll = false;
+    }, 800); // match your scroll speed
   });
 });
 
 window.addEventListener('load', () => {
 
-    const hash = window.location.hash.replace('#', '');
+  const hash = window.location.hash.replace('#', '');
 
-    if (hash) {
-        scrollToSection(hash);
+  if (hash) {
+    scrollToSection(hash);
+  }
+
+});
+
+//CHANGES NAVBAR BY SCROLLPAGE
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+
+  if (ignoreScroll) return;
+
+  let current = '';
+
+  sections.forEach(section => {
+
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+
+    if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+      current = section.getAttribute('id');
     }
+
+  });
+
+  links.forEach(link => {
+
+    link.classList.remove('active');
+
+    if (link.dataset.target === current) {
+      link.classList.add('active');
+    }
+
+  });
 
 });
 
