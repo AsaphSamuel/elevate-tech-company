@@ -3,6 +3,11 @@ body {
     min-width: 100%;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 #user-container{
     position: absolute;
     display: flex;
@@ -15,6 +20,48 @@ body {
     gap: 10px;
     cursor: pointer;
 }
+
+/*HEADER*/
+.header-logo {
+    position: absolute;
+    left: 2%;
+}
+
+.navbar {
+    display: flex;
+    gap: 60px;
+
+    padding-top: 15px;
+}
+
+.navbar-text {
+    position: relative;
+    color: #123944;
+    cursor: pointer;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* underline (hidden by default) */
+.navbar-text::after {
+    content: "";
+    position: absolute;
+    left: 18px;
+    bottom: -4px;
+
+    width: 0%;
+    height: 2px;
+
+    background: #123944;
+
+    transition: width 0.3s ease;
+}
+
+/* active state */
+.navbar-text.active::after {
+    width: 100%;
+}
+
 
 @media (max-aspect-ratio: 1/1) {
     header {
@@ -105,7 +152,7 @@ body {
 .galery-hero-carousel{
     position: relative;
 
-    width: auto;
+    width: 100%;
     height: 700px;
 
     overflow: hidden;
@@ -123,7 +170,7 @@ body {
     width: 100%;
     height: 100%;
 
-    transition: transform 0.6s ease-in-out;
+    transition: transform .6s ease-in-out;
 }
 
 /* =========================
@@ -152,8 +199,8 @@ body {
 .galery-carousel-controls{
     position: absolute;
 
-    bottom: 40px;
     left: 50%;
+    bottom: 40px;
 
     transform: translateX(-50%);
 
@@ -161,11 +208,11 @@ body {
     align-items: center;
     gap: 30px;
 
-    border-radius: 30px;
+    padding: 8px 12px;
 
-    padding: 5px 8px;
+    border-radius: 50px;
 
-    background-color: #1f4c57;
+    background: rgba(31,76,87,.95);
 
     z-index: 20;
 }
@@ -175,35 +222,30 @@ body {
 ========================= */
 
 .galery-carousel-btn{
-    width: 35px;
-    height: 35px;
+    width: 42px;
+    height: 42px;
 
     border: none;
     border-radius: 50%;
 
-    background: rgba(255,255,255,0.95);
+    background: white;
 
     color: #1f4c57;
 
-    font-size: 14px;
-    font-weight: bold;
-
     cursor: pointer;
 
-    transition: 0.25s;
+    font-size: 16px;
+    font-weight: bold;
 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: .3s;
 }
 
 .galery-carousel-btn:hover{
     transform: scale(1.08);
-
-    background: #1f4c57;
-    color: white;
 }
 
 /* =========================
-   COUNTER
+   CONTADOR
 ========================= */
 
 .galery-carousel-counter{
@@ -211,35 +253,23 @@ body {
 
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
-
-    letter-spacing: 1px;
 }
 
 /* =========================
-   MOBILE
+   TABLET
 ========================= */
 
-@media(max-width: 768px){
+@media (max-width: 1024px){
 
     .galery-hero-carousel{
-        height: 70vh;
+        height: 500px;
     }
 
     .galery-carousel-controls{
         gap: 20px;
-        bottom: 20px;
+        bottom: 25px;
     }
 
-    .galery-carousel-btn{
-        width: 55px;
-        height: 55px;
-
-        font-size: 28px;
-    }
-
-    .galery-carousel-counter{
-        font-size: 18px;
-    }
 }
 
 /* =========================
@@ -577,8 +607,10 @@ body {
     width: 35px;
     height: 35px;
 
-    border: 2px solid white;
     border-radius: 50%;
+
+    margin: 5px;
+    background: #1d4f59;
 
     display: flex;
     align-items: center;

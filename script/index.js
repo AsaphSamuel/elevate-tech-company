@@ -104,8 +104,172 @@ async function loadUserIcon() {
 
 loadUserIcon();
 
-//CARROSSEL MOSTRUARIO
+//NAVBAR
+//SCROLL NAVBAR
+function scrollToSection(id) {
 
+    const section = document.getElementById(id);
+
+    if (!section) return;
+
+    section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+
+}
+const links = document.querySelectorAll('.navbar-text');
+
+links.forEach(link => {
+  link.addEventListener('click', (event) => {
+
+    event.preventDefault();
+
+    // REMOVE .active DE TODOS
+    links.forEach(item => item.classList.remove('active'));
+
+    // ADICIONA .active PARA O CLICADO
+    link.classList.add('active');
+
+    console.log('Clicked:', link.textContent);
+
+    //scroll aplied
+    const targetId = link.dataset.target;
+      const currentPage = window.location.pathname;
+
+      // If NOT on index.html, redirect first
+      if (!currentPage.endsWith('index.html') && currentPage !== '/' && currentPage !== '') {
+
+        window.location.href = `index.html#${targetId}`;
+        return;
+      }
+
+      scrollToSection(targetId);
+  });
+});
+
+window.addEventListener('load', () => {
+
+    const hash = window.location.hash.replace('#', '');
+
+    if (hash) {
+        scrollToSection(hash);
+    }
+
+});
+
+//CARROSSEL HERO
+document.addEventListener('DOMContentLoaded', () => {
+
+  const track = document.querySelector('.galery-carousel-track');
+  const slides = document.querySelectorAll('.galery-carousel-slide');
+
+  const prevBtn = document.querySelector('.galery-carousel-btn.prev');
+  const nextBtn = document.querySelector('.galery-carousel-btn.next');
+
+  const currentSlide = document.getElementById('galery-current-slide');
+  const totalSlides = document.getElementById('galery-total-slides');
+
+  let index = 0;
+  let autoPlay;
+
+  totalSlides.textContent = slides.length;
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    currentSlide.textContent = index + 1;
+  }
+
+  function startAutoPlay() {
+
+    autoPlay = setInterval(() => {
+
+      index++;
+
+      if (index >= slides.length) {
+        index = 0;
+      }
+
+      updateCarousel();
+
+    }, 5000);
+
+  }
+
+  function resetAutoPlay() {
+
+    clearInterval(autoPlay);
+    startAutoPlay();
+
+  }
+
+  nextBtn.addEventListener('click', () => {
+
+    index++;
+
+    if (index >= slides.length) {
+      index = 0;
+    }
+
+    updateCarousel();
+    resetAutoPlay();
+
+  });
+
+  prevBtn.addEventListener('click', () => {
+
+    index--;
+
+    if (index < 0) {
+      index = slides.length - 1;
+    }
+
+    updateCarousel();
+    resetAutoPlay();
+
+  });
+
+  // Swipe para celular
+  let startX = 0;
+  let endX = 0;
+
+  track.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  track.addEventListener('touchend', (e) => {
+
+    endX = e.changedTouches[0].clientX;
+
+    const distance = startX - endX;
+
+    if (distance > 50) {
+
+      index++;
+
+      if (index >= slides.length) {
+        index = 0;
+      }
+
+    } else if (distance < -50) {
+
+      index--;
+
+      if (index < 0) {
+        index = slides.length - 1;
+      }
+    }
+
+    updateCarousel();
+    resetAutoPlay();
+
+  });
+
+  updateCarousel();
+  startAutoPlay();
+});
+
+//CARROSSEL MOSTRUARIO
 const track = document.querySelector('.templates-grid');
 const cards = document.querySelectorAll('.template-card');
 
@@ -124,32 +288,32 @@ const maxIndex = cards.length - visibleCards;
 
 nextBtn.addEventListener('click', () => {
 
-    if(currentIndex < maxIndex){
+  if(currentIndex < maxIndex){
 
-        currentIndex++;
+    currentIndex++;
 
-        updateCarousel();
+    updateCarousel();
 
-    }
+  }
 
 });
 
 prevBtn.addEventListener('click', () => {
 
-    if(currentIndex > 0){
+  if(currentIndex > 0){
 
-        currentIndex--;
+    currentIndex--;
 
-        updateCarousel();
+    updateCarousel();
 
-    }
+  }
 
 });
 
 function updateCarousel(){
 
-    track.style.transform =
-        `translateX(-${currentIndex * cardWidth}px)`;
+  track.style.transform =
+    `translateX(-${currentIndex * cardWidth}px)`;
 
 }
 
@@ -157,15 +321,15 @@ function updateCarousel(){
 const indicator = document.querySelector('.scroll-indicator');
 
 window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
+  const scrollTop = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
 
-    const nearBottom = scrollTop + windowHeight >= documentHeight - 700;
+  const nearBottom = scrollTop + windowHeight >= documentHeight - 700;
 
-    if (nearBottom) {
-        indicator.classList.add('hidden');
-    } else {
-        indicator.classList.remove('hidden');
-    }
+  if (nearBottom) {
+    indicator.classList.add('hidden');
+  } else {
+    indicator.classList.remove('hidden');
+  }
 });
