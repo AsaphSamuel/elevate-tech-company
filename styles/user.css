@@ -105,9 +105,37 @@ html, body {
   max-height: auto;
   gap: 35px;
 }
+
+.email-container {
+  display: flex;
+  align-items: center;
+
+  width: 60%;
+}
+.txt-email {
+  width: 100%;
+}
+.padlock {
+  position: absolute;
+
+  width: 25px;
+  height: 25px;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .padlock {
+    margin-left: calc(60% - 30px);
+  }
+}
+@media (min-aspect-ratio: 1/1) {
+  .padlock {
+    margin-left: 190px;
+  }
+}
+
 .btn-login{ /*BOTÃO*/
     margin: 25px 0 0 0;
-    width: calc(60% + 21px);
+    width: 60%;
     height: 50px;
     background-color: #ebe7e0;
     color: rgba(58, 58, 58, 0.589);

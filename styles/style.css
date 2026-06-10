@@ -152,7 +152,7 @@ h3{
 }
 .lbl.error.login{
     position: absolute;
-    margin-top: 165px;
+    margin-top: 135px;
     text-align: center;
     color: rgb(247, 189, 166);
 }
@@ -160,8 +160,8 @@ h3{
 .btn-login{ /*BOTÃO*/
     margin: 35px 0 0 0;
     width: calc(60% + 21px);
-    height: 45px;
-    min-height: 45px;
+    height: 40px;
+    min-height: 40px;
     background-color: #ebe7e0;
     color: rgba(58, 58, 58, 0.589);
     border-radius: 10px;
@@ -174,8 +174,60 @@ h3{
 .btn-login:hover{ /*BOTÃO MOUSE*/
     cursor: pointer;
     width: calc(62% + 21px);
-    height: 52px;
+    height: 47px;
     box-shadow: 1px 1px 53px -5px rgba(0, 0, 0, 1);
     -webkit-box-shadow: 1px 1px 53px -5px rgba(250, 240, 196, 0.6);
     -moz-box-shadow: 1px 1px 53px -5px rgba(250, 240, 196, 0.6);
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    width: calc(60% + 25px);
+}
+
+.remember-box {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #666;
+    border-radius: 8px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+.remember-box::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    transition: 0.15s transform ease-in-out;
+
+    clip-path: polygon(
+        14% 44%,
+        0 65%,
+        50% 100%,
+        100% 16%,
+        80% 0,
+        43% 62%
+    );
+
+    background: #354f52;
+}
+
+.remember-box:checked {
+    background: #ebe7e0;
+    border-color: #ebe7e0;
+}
+
+.remember-box:checked::before {
+    transform: scale(1);
+}
+.remember-text {
+    cursor: pointer;
+    color: #ebe7e0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }

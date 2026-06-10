@@ -108,6 +108,7 @@ document.querySelector("#btn-login").addEventListener("click", async () => {
   const USER_LOGIN = document.querySelector("#user").value.toLowerCase();
   const PASS_LOGIN = document.querySelector("#pass").value;
   const msg = document.querySelector("#lbl-error");
+  const remember = document.querySelector("#remember");
 
   try {
     let userId = null;
@@ -127,20 +128,37 @@ document.querySelector("#btn-login").addEventListener("click", async () => {
     const senhaBanco = await getPassId(userId);
 
     if (senhaBanco === PASS_LOGIN) {
-      console.log("Login feito id:", userId);
+      if (remember.checked) {
+        console.log("Login feito id:", userId, ". Token expirará em 30 dias.");
 
-      const agora = Date.now();
-      const expiraEm = 24 * 60 * 60 * 1000;
+        const agora = Date.now();
+        const expiraEm = 30 * 24 * 60 * 60 * 1000;
 
-      const session = {
-        userId: userId,
-        token: Math.random().toString(36).substring(2),
-        expiresAt: agora + expiraEm
-      };
+        const session = {
+          userId: userId,
+          token: Math.random().toString(36).substring(2),
+          expiresAt: agora + expiraEm
+        };
 
-      localStorage.setItem("session", JSON.stringify(session));
+        localStorage.setItem("session", JSON.stringify(session));
 
-      window.location.href = "index.html";
+        window.location.href = "index.html";
+      } else {
+        console.log("Login feito id:", userId);
+
+        const agora = Date.now();
+        const expiraEm = 24 * 60 * 60 * 1000;
+
+        const session = {
+          userId: userId,
+          token: Math.random().toString(36).substring(2),
+          expiresAt: agora + expiraEm
+        };
+
+        localStorage.setItem("session", JSON.stringify(session));
+
+        window.location.href = "index.html";
+      }
     } else {
       msg.innerText = "Senha incorreta.";
     }
@@ -158,6 +176,7 @@ document.querySelector("#loginForm").addEventListener("submit", async (e) => {
   const USER_LOGIN = document.querySelector("#user").value.toLowerCase();
   const PASS_LOGIN = document.querySelector("#pass").value;
   const msg = document.querySelector("#lbl-error");
+  const remember = document.querySelector("#remember");
 
   try {
 
@@ -179,20 +198,37 @@ document.querySelector("#loginForm").addEventListener("submit", async (e) => {
 
     if (senhaBanco === PASS_LOGIN) {
 
-      console.log("Login feito id:", userId);
+      if (remember.checked) {
+        console.log("Login feito id:", userId, ". Token expirará em 30 dias.");
 
-      const agora = Date.now();
-      const expiraEm = 24 * 60 * 60 * 1000;
+        const agora = Date.now();
+        const expiraEm = 30 * 24 * 60 * 60 * 1000;
 
-      const session = {
+        const session = {
           userId: userId,
           token: Math.random().toString(36).substring(2),
           expiresAt: agora + expiraEm
-      };
+        };
 
-      localStorage.setItem("session", JSON.stringify(session));
+        localStorage.setItem("session", JSON.stringify(session));
 
-      window.location.href = "index.html";
+        window.location.href = "index.html";
+      } else {
+        console.log("Login feito id:", userId);
+
+        const agora = Date.now();
+        const expiraEm = 24 * 60 * 60 * 1000;
+
+        const session = {
+          userId: userId,
+          token: Math.random().toString(36).substring(2),
+          expiresAt: agora + expiraEm
+        };
+
+        localStorage.setItem("session", JSON.stringify(session));
+
+        window.location.href = "index.html";
+      }
     } else {
       msg.innerText = "Senha incorreta.";
     }
