@@ -122,6 +122,8 @@ html, body {
   align-items: center;
 
   width: 60%;
+  
+  cursor: not-allowed;
 }
 .txt-email {
   width: 100%;
