@@ -203,3 +203,14 @@ window.addEventListener('scroll', () => {
   });
 
 });
+
+//AUTO PUT .active IN STORE
+document.querySelectorAll('.active').forEach(el => {
+  el.classList.remove('active');
+});
+
+const store = document.querySelector('ul[data-target="store"]');
+
+requestAnimationFrame(() => {
+  store.classList.add('active');
+});

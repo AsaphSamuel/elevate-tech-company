@@ -30,13 +30,22 @@
                 </div>
             </div>
             
-            <input class="input image-link" type="text" placeholder="Image Link" id="photoUrl">
-            
-            <input class="input txt-user" type="text" id="txt-user" placeholder="username" maxlength="18">
+            <div class="url subcontainer">
+                <h3 class="lbl user">Photo link</h3>
+                <input class="input image-link" type="text" placeholder="Image Link" id="photoUrl">
+            </div>
 
-            <div class="email-container">
-                <input class="input txt-email" type="email" id="email" placeholder="exemple@gmail.com" maxlength="28" disabled>
-                <img src="../images/download.png" alt="locked" class="padlock">
+            <div class="user subcontainer">
+                <h3 class="lbl user">User</h3>
+                <input class="input txt-user" type="text" id="txt-user" placeholder="username" maxlength="18">
+            </div>
+
+            <div class="email subcontainer">
+                <h3 class="lbl user">Email</h3>
+                <div class="email-container-input">
+                    <input class="input txt-email" type="email" id="email" placeholder="exemple@gmail.com" maxlength="28" disabled>
+                    <img src="../images/download.png" alt="locked" class="padlock">
+                </div>
             </div>
 
             <h3 class="lbl error" id="lbl-error"></h3>

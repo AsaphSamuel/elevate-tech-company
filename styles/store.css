@@ -147,13 +147,38 @@ a {
     object-position: center;
 }
 .home-container{
-    width: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
+    
+    width: 100%;
+    
     padding-bottom: 120px;
 }
 
+.error404 {
+    display: flex;
+    flex-direction: column;
+    
+    height: 50vh;
 
+    align-items: center;
+    justify-content: center;
+}
+
+.error-text1 {
+    font-size: 200px;
+    margin: 0;
+
+    color: #264f55;
+}
+
+.error-text2 {
+    font-weight: 50;
+    letter-spacing: 2px;
+    color: #776649;
+    
+    margin-left: 15px;
+}
 
 footer {
     background-color: #264f55;

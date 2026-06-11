@@ -24,6 +24,7 @@ a {
 .navbar {
     display: flex;
     gap: 60px;
+    user-select: none;
 
     padding-top: 15px;
 }
