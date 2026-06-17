@@ -44,7 +44,7 @@ async function existeEmail(email) {
 }
 
 exports.register = async (req, res) => {
-
+    
     try {
 
         const { user, email, pass } = req.body;
