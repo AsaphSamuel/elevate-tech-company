@@ -79,12 +79,12 @@ async function loadUserIcon() {
 
   if (!userIcon) return;
 
-  const finalImg = imgUrl || "../images/default-user.png";
+  const finalImg = imgUrl || "../sources/images/default-user.png";
 
   userIcon.src = finalImg;
 
   userIcon.onerror = () => {
-    userIcon.src = "../images/default-user.png";
+    userIcon.src = "../sources/images/default-user.png";
   };
 }
 

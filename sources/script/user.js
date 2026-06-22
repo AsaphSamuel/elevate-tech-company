@@ -123,7 +123,7 @@ input.addEventListener("input", () => {
     preview.src = url;
 
     preview.onerror = () => {
-      preview.src = "../images/default-user.png";
+      preview.src = "../sources/images/default-user.png";
     };
   }
 });
@@ -140,7 +140,7 @@ async function loadUserImage() {
     document.querySelector("#photoUrl").value = imgUrl;
   } else {
     document.querySelector("#photoUrl").value = "";
-    profileImg.src = "../images/default-user.png";
+    profileImg.src = "../sources/images/default-user.png";
   }
 }
 
@@ -175,7 +175,7 @@ document.querySelector("#btn-sigin").addEventListener("click", async () => {
 document.querySelector("#pp-overlay").addEventListener("click", async () => {
   const profileImg = document.querySelector("#profilePreview");
 
-  profileImg.src = "../images/default-user.png";
+  profileImg.src = "../sources/images/default-user.png";
 
   document.querySelector("#photoUrl").value = "";
   imageRemove = true;

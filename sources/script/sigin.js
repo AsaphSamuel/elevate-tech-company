@@ -1,44 +1,124 @@
-document.querySelector("#registerForm").addEventListener("submit", async (e) => {
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-    e.preventDefault();
+import {
+  getDatabase,
+  ref,
+  push,
+  set,
+  query,
+  orderByChild,
+  equalTo,
+  get
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-    const user = document.querySelector("#user").value.trim().toLowerCase();
-    const email = document.querySelector("#email").value.trim();
-    const pass = document.querySelector("#pass").value;
+const firebaseConfig = {
+  apiKey: "AIzaSyBknhPHD2jXaMMVH4Nq3uJnc8uuiKs37H4",
+  authDomain: "elevate-tech-company.firebaseapp.com",
+  databaseURL: "https://elevate-tech-company-default-rtdb.firebaseio.com",
+  projectId: "elevate-tech-company",
+  storageBucket: "elevate-tech-company.firebasestorage.app",
+  messagingSenderId: "5988059403",
+  appId: "1:5988059403:web:09e916e312b9c47939fa0e"
+};
 
-    const msg = document.querySelector("#lbl-error");
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
-    msg.innerText = "";
+async function existeNome(username) {
+    const usuariosRef = ref(db, 'user');
 
+    const q = query(
+        usuariosRef,
+        orderByChild('user'),
+        equalTo(username)
+    );
+
+    const snapshot = await get(q);
+
+    return snapshot.exists();
+}
+async function existeEmail(email) {
+    const usuariosRef = ref(db, 'user');
+
+    const q = query(
+        usuariosRef,
+        orderByChild('email'),
+        equalTo(email)
+    );
+
+    const snapshot = await get(q);
+
+    return snapshot.exists();
+}
+
+async function cadastrar(username, email, password) {
     try {
+        const existe = await existeNome(username);
 
-        const response = await fetch("http://localhost:3000/api/auth/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                user,
-                email,
-                pass
-            })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            msg.innerText = data.message;
-            return;
+        if (existe) {
+        console.log("❌ Usuário já existe");
+        return;
         }
 
-        window.location.href = "login.html";
+        const usuariosRef = ref(db, 'user');
+        const novoUserRef = push(usuariosRef);
 
-    } catch (error) {
+        await set(novoUserRef, {
+        user: username,
+        email: email,
+        pass: password,
+        perm: false
+        });
 
-        console.error(error);
+        console.log("✅ Usuário cadastrado com sucesso");
+    } catch (erro) {
+        console.error("Erro ao cadastrar:", erro);
+    }
+}
 
-        msg.innerText = "Erro ao conectar com o servidor.";
+document.querySelector("#btn-sigin").addEventListener("click", async () => {
+    const user = document.querySelector("#user")?.value?.toLowerCase() || "";
+    const email_cad = document.querySelector("#email").value;
+    const pass = document.querySelector("#pass")?.value || "";
 
+    if(user == "") {
+        document.querySelector("#user").placeholder = "Preencha esse campo!";
+    }if(email_cad == "") {
+        document.querySelector("#email").placeholder = "Preencha esse campo!";
+    }if(pass == "") {
+        document.querySelector("#pass").placeholder = "Preencha esse campo!";
     }
 
+    if(user != "" && email_cad != "" && pass != "") {
+        const nomeExiste = await existeNome(user);
+        const emailExiste = await existeEmail(email_cad);
+
+        if(!nomeExiste && !emailExiste) {
+            try{
+                const msg = document.querySelector("#lbl-error");
+
+                msg.innerText = '';
+
+                await cadastrar(user, email_cad, pass);
+
+                console.log("Usuario criado: " + user, email_cad, pass);
+
+                window.location.href = "login.html";
+            } catch{
+                const msg = document.querySelector("#lbl-error");
+
+                msg.innerText = "Erro ao tentar cadastrar usuário, Tente novamente.";
+            }
+        }
+        if(existeNome(user)) {
+            const msg = document.querySelector("#lbl-error");
+            
+            msg.innerText = `Já existe um usuário com o nome ${user}`;
+        };
+        if(existeEmail(email_cad)) {
+            const msg = document.querySelector("#lbl-error");
+
+            msg.innerText = 'Já existe um usuário com este email.';
+        };
+    }
 });
