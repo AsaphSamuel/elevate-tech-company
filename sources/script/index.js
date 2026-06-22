@@ -338,7 +338,7 @@ const gap = 25;
 
 const cardWidth = cards[0].offsetWidth + gap;
 
-const maxIndex = cards.length - visibleCards;
+const maxIndex = (cards.length - visibleCards)/5;
 
 nextBtn.addEventListener('click', () => {
 
@@ -367,7 +367,7 @@ prevBtn.addEventListener('click', () => {
 function updateCarousel(){
 
   track.style.transform =
-    `translateX(-${currentIndex * cardWidth}px)`;
+    `translateX(-${(currentIndex * cardWidth) * 4}px)`;
 
 }
 
