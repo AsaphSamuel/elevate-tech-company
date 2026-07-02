@@ -21,22 +21,283 @@
         </div>
 
         <!--USER-CONTAINER-->
-        <div id="user-container">
-            <h1 id="username">Loading User</h1>
+        <nav class="user-nav">
+            <div id="user-container">
+                <h1 id="username">Login</h1>
 
-            <img id="userIcon" class="default-user" src="../sources/images/default-user.png" alt="profile image">
-        </div>
+                <img id="userIcon" class="default-user" src="../../sources/images/imagens ecomercefault-user.png" alt="profile image">
+            </div>
+
+            <div class="dropdown-menu">
+                <div class="menu-item" id="my-account"><a href=""></a>Minha conta</div>
+                <div class="menu-item"><a href=""></a>Modo escuro</div>
+                <div class="menu-item" id="logout"><a href=""></a>Log out</div>
+            </div>
+        </nav>
 
     </header>
 
     
     <main class="home-container">
-        <section id="store" class="error404">
 
-            <h1 class="error-text1">404</h1>
-            <h2 class="error-text2">Página em construção</h2>
-            
+        <!-- HERO -->
+        <section class="hero-search">
+            <div class="hero-content">
+                <h1>Modelos profissionais para seu negócio</h1>
+                <p>Escolha seu template ideal, personalize e lance seu projeto hoje mesmo.</p>
+
+                <form class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Buscar por Landing Page, E-commerce, Portfólio..."
+                    >
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
         </section>
+
+        <!-- FILTROS -->
+        <section class="filters">
+            <button class="active-nav2">Todos</button>
+            <button>E-commerce</button>
+            <button>Landing Pages</button>
+            <button>Portfólios</button>
+        </section>
+
+        <div class="templates-container">
+
+            <!-- EM DESTAQUE -->
+            <section class="category">
+
+                <h2>Templates em Destaque</h2>
+
+                <div class="cards">
+
+                    <article class="card">
+
+                        <img src="../sources/images/imagens ecomerce/templatesDestaque/Frame1.png" alt="Template">
+
+                        <div class="card-content">
+
+                            <h3>Modelos para E-commerces</h3>
+
+                            <p>
+                                Design minimalista focado em conversão
+                                e showcase de produtos.
+                            </p>
+
+                            <div class="card-footer">
+                                <span>R$150</span>
+                                <button>Comprar</button>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <article class="card">
+
+                        <img src="../sources/images/imagens ecomerce/" alt="Template">
+
+                        <div class="card-content">
+
+                            <h3>Tech Store Pro</h3>
+
+                            <p>
+                                Design minimalista focado em conversão
+                                para produtos digitais.
+                            </p>
+
+                            <div class="card-footer">
+                                <span>R$150</span>
+                                <button>Comprar</button>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <article class="card">
+
+                        <img src="../sources/images/imagens ecomerce" alt="Template">
+
+                        <div class="card-content">
+
+                            <h3>Cosmetics Elegance</h3>
+
+                            <p>
+                                Template moderno para cosméticos
+                                com visual premium.
+                            </p>
+
+                            <div class="card-footer">
+                                <span>R$150</span>
+                                <button>Comprar</button>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- ECOMMERCE -->
+
+            <section class="category">
+
+                <h2>Modelos para E-commerce</h2>
+
+                <div class="cards">
+
+                    <article class="card">
+                        <img src="../sources/images/imagens ecomerce/templatesEcomerce/frame1.png" alt="">
+                        <div class="card-content">
+                            <h3>Fashion Elegance</h3>
+                            <p>Loja moderna para moda e vestuário.</p>
+
+                            <div class="card-footer">
+                                <span>R$150</span>
+                                <button>Comprar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="../sources/images/imagens ecomerce/templatesEcomerce/frame2.png" alt="">
+                        <div class="card-content">
+                            <h3>Essencial Decor</h3>
+                            <p>E-commerce para decoração e móveis.</p>
+
+                            <div class="card-footer">
+                                <span>R$150</span>
+                                <button>Comprar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="../sources/images/imagens ecomerce/templatesEcomerce/frame3.png" alt="">
+                        <div class="card-content">
+                            <h3>Studio Mobília</h3>
+                            <p>Layout elegante para móveis planejados.</p>
+
+                            <div class="card-footer">
+                                <span>R$150</span>
+                                <button>Comprar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- LANDING PAGES -->
+
+            <section class="category">
+
+                <h2>Modelos para Landing Pages</h2>
+
+                <div class="cards">
+
+                    <article class="card">
+                        <img src="../sources/images/imagens ecomerce/templatesLandingPg/frame1.png" alt="">
+                        <div class="card-content">
+                            <h3>FlexTask Tech</h3>
+                            <p>Landing page para startups e SaaS.</p>
+
+                            <div class="card-footer">
+                                <span>R$150</span>
+                                <button>Comprar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="../sources/images/imagens ecomerce/templatesLandingPg/frame2.png" alt="">
+                        <div class="card-content">
+                            <h3>EcoTravel</h3>
+                            <p>Ideal para agências de turismo.</p>
+
+                            <div class="card-footer">
+                                <span>R$150</span>
+                                <button>Comprar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="../sources/images/imagens ecomerce/templatesLandingPg/frame3.png" alt="">
+                        <div class="card-content">
+                            <h3>Nexus Inovação</h3>
+                            <p>Template para empresas de tecnologia.</p>
+
+                            <div class="card-footer">
+                                <span>R$150</span>
+                                <button>Comprar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- PORTFÓLIOS -->
+
+            <section class="category">
+
+                <h2>Modelos para Portfólios</h2>
+
+                <div class="cards">
+
+                    <article class="card">
+                        <img src="../sources/images/imagens ecomerce/templatesPortifolio/frame1.png" alt="">
+                        <div class="card-content">
+                            <h3>Portfolio Digital Pro</h3>
+                            <p>Ideal para designers e desenvolvedores.</p>
+
+                            <div class="card-footer">
+                                <span>R$150</span>
+                                <button>Comprar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="../sources/images/imagens ecomerce/templatesPortifolio/frame2.png" alt="">
+                        <div class="card-content">
+                            <h3>Visual Storyteller</h3>
+                            <p>Perfeito para fotógrafos.</p>
+
+                            <div class="card-footer">
+                                <span>R$150</span>
+                                <button>Comprar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="../sources/images/imagens ecomerce/templatesPortifolio/frame3.png" alt="">
+                        <div class="card-content">
+                            <h3>Creative Studio Dark</h3>
+                            <p>Portfólio moderno com tema escuro.</p>
+
+                            <div class="card-footer">
+                                <span>R$150</span>
+                                <button>Comprar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </section>
+
+        </div>
+
     </main>
 
     <!--RODAPÉ-->
@@ -45,7 +306,7 @@
         <div class="footer-container">
 
             <div class="footer-column logo">
-                <img src="../sources/images/logo-invert-png.png" class="logo-footer">
+                <img src="../sources/images/icon3.png" class="logo-footer">
             </div>
 
             <div class="footer-column">

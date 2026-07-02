@@ -371,6 +371,31 @@ function updateCarousel(){
 
 }
 
+//DROPDOWN {MY ACCOUNT}
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector("#my-account");
+
+  if (container) {
+    container.addEventListener("click", () => {
+      const session = JSON.parse(localStorage.getItem("session"));
+
+      localStorage.setItem("session", JSON.stringify(session));
+
+      window.location.href = "user.html";
+    });
+  }
+});
+//DROPDOWN {LOGOUT}
+document.querySelector("#logout").addEventListener("click", async () => {
+  const session = JSON.parse(localStorage.getItem("session"));
+
+  session.expiresAt = Date.now();
+
+  localStorage.setItem("session", JSON.stringify(session));
+  location.href = "index.html";
+});
+
+
 //SCROLL INDICATOR
 const indicator = document.querySelector('.scroll-indicator');
 

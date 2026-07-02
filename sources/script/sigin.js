@@ -77,15 +77,15 @@ async function cadastrar(username, email, password) {
 }
 
 document.querySelector("#btn-sigin").addEventListener("click", async () => {
-    const user = document.querySelector("#user")?.value?.toLowerCase() || "";
+    const user = document.querySelector("#user")?.value?.toLowerCase().trim() || "";
     const email_cad = document.querySelector("#email").value;
     const pass = document.querySelector("#pass")?.value || "";
 
-    if(user == "") {
+    if (user == "") {
         document.querySelector("#user").placeholder = "Preencha esse campo!";
-    }if(email_cad == "") {
+    } if (email_cad == "") {
         document.querySelector("#email").placeholder = "Preencha esse campo!";
-    }if(pass == "") {
+    } if (pass == "") {
         document.querySelector("#pass").placeholder = "Preencha esse campo!";
     }
 
