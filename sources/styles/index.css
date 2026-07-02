@@ -8,16 +8,71 @@ a {
     color: inherit;
 }
 
-#user-container{
+.user-nav {
     position: absolute;
+    right: 50px;
+    top: calc(50% - 8px);
     display: flex;
-    height: 50px;
-    padding: 0 10px;
-    border-radius: 30px;
+    flex-direction: column;
+}
+
+.user-nav:hover .dropdown-menu{
+    height: auto;
+
+    background: #255b68;
+    color: #ebe7e0;
+}
+
+#user-container{
+    display: flex;
     align-items: center;
     justify-content: end;
-    right: 50px;
     gap: 10px;
+
+    height: 50px;
+    cursor: pointer;
+
+    padding: 0 10px;
+    border-radius: 30px;
+}
+
+#username{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    size: auto;
+    cursor: pointer;
+}
+.default-user{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 12px;
+    height: 0px;
+    margin: 0 10px;
+    border-radius: 15px;
+    gap: 10px;
+
+    background: transparent;
+    color: transparent;
+
+    transition: 0.3s ease-in-out;
+}
+
+.menu-item {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+
+    size: auto;
     cursor: pointer;
 }
 
@@ -56,7 +111,6 @@ a {
 .navbar-text.active::after {
     width: 100%;
 }
-
 
 @media (max-aspect-ratio: 1/1) {
     header {
@@ -137,20 +191,6 @@ a {
     }
 }
 
-#username{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    size: auto;
-    cursor: pointer;
-}
-.default-user{
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
-}
 .home-container{
     width: 100%;
     overflow-y: hidden;
