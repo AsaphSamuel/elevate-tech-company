@@ -31,7 +31,8 @@ import {
   query,
   orderByChild,
   equalTo,
-  get
+  get,
+  child
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 const firebaseConfig = {
@@ -238,4 +239,186 @@ document.querySelector("#logout").addEventListener("click", async () => {
 
   localStorage.setItem("session", JSON.stringify(session));
   location.href = "index.html";
+});
+
+// S T O R E---------------------S T O R E//
+
+async function carregarProdutos(){
+
+  const snapshot = await get(ref(db,"products"));
+
+  if(snapshot.exists()){
+
+    console.log(snapshot.val());
+
+  }
+
+}
+
+const produtos = [
+  {
+    id: 1,
+    name: "Generic E-commerce",
+    category: "E-commerce",
+    price: 150,
+    image: "../sources/images/imagens ecomerce/templatesDestaque/Frame1.png"
+  },
+  {
+    id: 2,
+    name: "Tech Store Pro",
+    category: "E-commerce",
+    price: 150,
+    image: "images/template2.jpg"
+  },
+  {
+    id: 3,
+    name: "Cosmetics Elegance",
+    category: "E-commerce",
+    price: 150,
+    image: "images/template3.jpg"
+  },
+  {
+    id: 4,
+    name: "Fashion Elegance",
+    category: "E-commerce",
+    price: 150,
+    image: "../sources/images/imagens ecomerce/templatesEcomerce/frame1.png"
+  },
+  {
+    id: 5,
+    name: "Essencial Decor",
+    category: "E-commerce",
+    price: 150,
+    image: "../sources/images/imagens ecomerce/templatesEcomerce/frame2.png"
+  },
+  {
+    id: 6,
+    name: "Studio Mobília",
+    category: "E-commerce",
+    price: 150,
+    image: "../sources/images/imagens ecomerce/templatesEcomerce/frame3.png"
+  },
+  {
+    id: 7,
+    name: "FlexTask Tech",
+    category: "Landing Page",
+    price: 150,
+    image: "../sources/images/imagens ecomerce/templatesLandingPg/frame1.png"
+  },
+  {
+    id: 8,
+    name: "EcoTravel",
+    category: "Landing Page",
+    price: 150,
+    image: "../sources/images/imagens ecomerce/templatesLandingPg/frame2.png"
+  },
+  {
+    id: 9,
+    name: "Nexus Inovação",
+    category: "Landing Page",
+    price: 150,
+    image: "../sources/images/imagens ecomerce/templatesLandingPg/frame3.png"
+  },
+  {
+    id: 10,
+    name: "Portfólio Digital",
+    category: "Portfólio",
+    price: 150,
+    image: "../sources/images/imagens ecomerce/templatesPortifolio/frame1.png"
+  },
+  {
+    id: 11,
+    name: "Visual Storyteller",
+    category: "Portfólio",
+    price: 150,
+    image: "../sources/images/imagens ecomerce/templatesPortifolio/frame2.png"
+  },
+  {
+    id: 12,
+    name: "Creative Studio Dark",
+    category: "Portfólio",
+    price: 150,
+    image: "../sources/images/imagens ecomerce/templatesPortifolio/frame3.png"
+  }
+];
+
+
+async function criarProdutos() {
+
+  const produtosRef = ref(db, "products");
+
+  // Verifica se já existem produtos
+  const snapshot = await get(produtosRef);
+
+  if (snapshot.exists()) {
+    console.log("Produtos já cadastrados.");
+    return;
+  }
+
+  // Cadastra todos os produtos
+  for (const produto of produtos) {
+
+    await set(
+      ref(db, `products/${produto.id}`),
+      {
+        name: produto.name,
+        category: produto.category,
+        price: produto.price,
+        image: produto.image
+      }
+    );
+
+  }
+
+  console.log("Produtos cadastrados com sucesso!");
+
+}
+
+criarProdutos();
+
+async function adicionarCarrinho(productId) {
+
+    const session = JSON.parse(localStorage.getItem("session"));
+
+    if (!session) {
+        console.log("Faça login.");
+        return;
+    }
+
+    const userId = session.userId;
+
+    const itemRef = ref(db, `carts/${userId}/items/${productId}`);
+
+    const snapshot = await get(itemRef);
+
+    if (snapshot.exists()) {
+
+        const item = snapshot.val();
+
+        await set(itemRef, {
+            productId: Number(productId),
+            quantity: item.quantity + 1
+        });
+
+    } else {
+
+        await set(itemRef, {
+            productId: Number(productId),
+            quantity: 1
+        });
+
+    }
+
+    console.log("Produto adicionado ao carrinho.");
+
+}
+
+document.querySelectorAll(".buy-btn").forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+        adicionarCarrinho(btn.dataset.product);
+
+    });
+
 });
