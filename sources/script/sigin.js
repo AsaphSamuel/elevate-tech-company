@@ -76,7 +76,10 @@ async function cadastrar(username, email, password) {
     }
 }
 
-document.querySelector("#btn-sigin").addEventListener("click", async () => {
+document.querySelector("#btn-sigin").addEventListener("click", async (e) => {
+
+    e.preventDefault(); 
+
     const user = document.querySelector("#user")?.value?.toLowerCase().trim() || "";
     const email_cad = document.querySelector("#email").value;
     const pass = document.querySelector("#pass")?.value || "";
