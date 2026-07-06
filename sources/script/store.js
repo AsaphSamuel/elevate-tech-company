@@ -216,6 +216,12 @@ requestAnimationFrame(() => {
   store.classList.add('active');
 });
 
+//SHOW CART BUTTON
+document.querySelector("#showcart").addEventListener("click", () => {
+  const cart = document.querySelector("#cart");
+
+  cart.classList.toggle("active");
+})
 
 //DROPDOWN {MY ACCOUNT}
 document.addEventListener("DOMContentLoaded", () => {
