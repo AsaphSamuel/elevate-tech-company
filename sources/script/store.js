@@ -24,6 +24,8 @@ loopVerify();
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
+  remove,
+  update,
   getDatabase,
   ref,
   push,
@@ -217,11 +219,12 @@ requestAnimationFrame(() => {
 });
 
 //SHOW CART BUTTON
-document.querySelector("#showcart").addEventListener("click", () => {
-  const cart = document.querySelector("#cart");
+document.querySelector("#toggleCart").addEventListener("click", toggleCart)
+document.querySelector("#hideCart").addEventListener("click", toggleCart)
 
-  cart.classList.toggle("active");
-})
+function toggleCart() {
+  document.querySelector("#cart").classList.toggle("active");
+}
 
 //DROPDOWN {MY ACCOUNT}
 document.addEventListener("DOMContentLoaded", () => {
@@ -416,15 +419,153 @@ async function adicionarCarrinho(productId) {
     }
 
     console.log("Produto adicionado ao carrinho.");
+    
+    carregarCarrinho();
 
 }
 
 document.querySelectorAll(".buy-btn").forEach(btn=>{
 
-    btn.addEventListener("click",()=>{
+  btn.addEventListener("click",()=>{
 
-        adicionarCarrinho(btn.dataset.product);
+    adicionarCarrinho(btn.dataset.product);
 
-    });
+  });
 
 });
+
+//AUMENTAR QTD NO CARRINHO
+async function aumentarQuantidade(productId){
+
+    const session = JSON.parse(localStorage.getItem("session"));
+
+    const itemRef = ref(db, `carts/${session.userId}/items/${productId}`);
+
+    const snapshot = await get(itemRef);
+
+    if(snapshot.exists()){
+
+        const item = snapshot.val();
+
+        await update(itemRef,{
+            quantity: item.quantity + 1
+        });
+
+        carregarCarrinho();
+    }
+    
+}
+
+//DIMINUIR QTD NO CARRINHO
+async function diminuirQuantidade(productId){
+
+    const session = JSON.parse(localStorage.getItem("session"));
+
+    const itemRef = ref(db, `carts/${session.userId}/items/${productId}`);
+
+    const snapshot = await get(itemRef);
+
+    if(!snapshot.exists()) return;
+
+    const item = snapshot.val();
+
+    if(item.quantity > 1){
+
+        await update(itemRef,{
+            quantity: item.quantity - 1
+        });
+
+    }else{
+
+        await remove(itemRef);
+
+    }
+
+    carregarCarrinho();
+
+}
+
+//REMOVER PRODUTO DO CARRINHO
+async function removerProduto(productId){
+
+    const session = JSON.parse(localStorage.getItem("session"));
+
+    await remove(
+        ref(db, `carts/${session.userId}/items/${productId}`)
+    );
+
+    carregarCarrinho();
+
+}
+
+window.aumentarQuantidade = aumentarQuantidade;
+window.diminuirQuantidade = diminuirQuantidade;
+window.removerProduto = removerProduto;
+
+async function carregarCarrinho() {
+
+  const session = JSON.parse(localStorage.getItem("session"));
+
+  if (!session) {
+    console.log("Usuário não está logado.");
+    return;
+  }
+
+  const userId = session.userId;
+
+  // Busca os itens do carrinho
+  const cartRef = ref(db, `carts/${userId}/items`);
+  const cartSnapshot = await get(cartRef);
+
+  const cartContainer = document.getElementById("cart-items");
+  cartContainer.innerHTML = "";
+
+  if (!cartSnapshot.exists()) {
+    cartContainer.innerHTML = "<p>Carrinho vazio.</p>";
+    return;
+  }
+
+  const itens = cartSnapshot.val();
+
+  for (const itemId in itens) {
+
+    const item = itens[itemId];
+
+    // Busca o produto
+    const productRef = ref(db, `products/${item.productId}`);
+    const productSnapshot = await get(productRef);
+
+    if (!productSnapshot.exists()) continue;
+
+    const product = productSnapshot.val();
+
+    cartContainer.innerHTML += `
+    <div class="cart-item">
+
+      <img src="${product.image}" alt="${product.name}">
+
+      <div class="cart-info">
+        <h4>${product.name}</h4>
+
+        <div class="quantity-control">
+          <button onclick="diminuirQuantidade(${item.productId})">-</button>
+
+          <span>${item.quantity}</span>
+
+          <button onclick="aumentarQuantidade(${item.productId})">+</button>
+        </div>
+
+        <p>R$ ${(product.price * item.quantity).toFixed(2)}</p>
+
+        <button onclick="removerProduto(${item.productId})">
+          Remover
+        </button>
+
+      </div>
+
+    </div>
+    `;
+  }
+}
+
+carregarCarrinho();
