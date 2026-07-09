@@ -304,11 +304,14 @@ a {
     transition:.25s;
 }
 
-.filters button.active-nav2{
+.filters button.active-nav2 {
 
     background:#1d4e59;
     color:#efe8de;
 
+}
+.filters button.active-nav2:hover {
+    background:#123944;
 }
 
 .filters button:hover{
@@ -489,6 +492,10 @@ a {
     right: -450px;
     top: 142px;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     padding-top: 70px;
     
     height: calc(100vh - 142px);
@@ -508,12 +515,21 @@ a {
     right: 0;
 }
 
+.cart-empty{
+    position: absolute;
+    top: 40%;
+    right: calc(50% - 50px);
+
+    color: #ebe7e0;
+    font-size: 18px;
+}
+
 .cart-item {
     display: flex;
     gap: 25px;
 
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 20px;
 
     margin: 20px;
     height: 150px;
@@ -523,10 +539,55 @@ a {
 
 .cart-item img {
     width: 150px;
+    height: 150px;
+    object-fit: cover;
+
+    border-radius: 15px;
 }
 
 .cart-item h4 {
     margin: 15px 0 15px 0;
+}
+
+.cart-item button {
+    color: #ebe7e0;
+    background: #163b44;
+    
+    cursor: pointer;
+
+    border: none;
+    border-radius: 6px;
+}
+
+.cart-remove {
+    padding: 5px;
+}
+
+#cart-total {
+    position: absolute;
+    bottom: 10vh;
+
+    display: flex;
+    align-items: center;
+}
+
+.cart-total-title {
+    padding: 5px 20px;
+
+    color: #222;
+
+    background: #efe8de;
+    border-radius: 10px 0 0 10px;
+}
+
+.cart-total-price {
+    padding: 2px 20px 2px 12px;
+
+    color: #efe8de;
+
+    border-style: solid;
+    border-color: #efe8de;
+    border-radius: 0 10px 10px 0;
 }
 
 .show-cart {
@@ -538,10 +599,32 @@ a {
     z-index: 1;
 }
 
+#cart-counter {
+    display: flex;
+    align-items: center;
+}
+
+.show-cart p {
+    position: absolute;
+    right: -7px;
+    top: -20px;
+
+    text-align: center;
+    color: #123944;
+
+    width: 20px;
+    height: 20px;
+
+    background: #ebe7e0;
+    border-style: solid;
+    border-color: #1d4e59;
+    border-radius: 100%;
+}
+
 .hide-cart {
     position: absolute;
     top: 35px;
-    left: 35px;
+    left: 20px;
 
     cursor: pointer;
 }

@@ -223,7 +223,15 @@ document.querySelector("#toggleCart").addEventListener("click", toggleCart)
 document.querySelector("#hideCart").addEventListener("click", toggleCart)
 
 function toggleCart() {
+  const outClick = document.querySelector("#home");
+  
   document.querySelector("#cart").classList.toggle("active");
+
+  outClick.addEventListener("click", () => {
+    if (document.querySelector("#cart").classList.contains("active")) {
+      document.querySelector("#cart").classList.remove("active");
+    }
+  })
 }
 
 //DROPDOWN {MY ACCOUNT}
@@ -277,14 +285,14 @@ const produtos = [
     name: "Tech Store Pro",
     category: "E-commerce",
     price: 150,
-    image: "images/template2.jpg"
+    image: "../sources/images/imagens ecomerce/templatesDestaque/Frame2.png"
   },
   {
     id: 3,
     name: "Cosmetics Elegance",
     category: "E-commerce",
     price: 150,
-    image: "images/template3.jpg"
+    image: "../sources/images/imagens ecomerce/templatesDestaque/Frame3.png"
   },
   {
     id: 4,
@@ -422,6 +430,8 @@ async function adicionarCarrinho(productId) {
     
     carregarCarrinho();
 
+    atualizarCarrinho();
+
 }
 
 document.querySelectorAll(".buy-btn").forEach(btn=>{
@@ -452,6 +462,8 @@ async function aumentarQuantidade(productId){
         });
 
         carregarCarrinho();
+
+        atualizarCarrinho();
     }
     
 }
@@ -483,6 +495,8 @@ async function diminuirQuantidade(productId){
 
     carregarCarrinho();
 
+    atualizarCarrinho();
+
 }
 
 //REMOVER PRODUTO DO CARRINHO
@@ -495,6 +509,8 @@ async function removerProduto(productId){
     );
 
     carregarCarrinho();
+
+    atualizarCarrinho();
 
 }
 
@@ -513,31 +529,37 @@ async function carregarCarrinho() {
 
   const userId = session.userId;
 
-  // Busca os itens do carrinho
   const cartRef = ref(db, `carts/${userId}/items`);
   const cartSnapshot = await get(cartRef);
 
   const cartContainer = document.getElementById("cart-items");
+  const cartTotal = document.getElementById("cart-total");
+
   cartContainer.innerHTML = "";
 
   if (!cartSnapshot.exists()) {
-    cartContainer.innerHTML = "<p>Carrinho vazio.</p>";
+    cartContainer.innerHTML = '<p class="cart-empty">Carrinho vazio.</p>';
     return;
   }
 
   const itens = cartSnapshot.val();
 
+  let total = 0;
+
   for (const itemId in itens) {
 
     const item = itens[itemId];
 
-    // Busca o produto
     const productRef = ref(db, `products/${item.productId}`);
     const productSnapshot = await get(productRef);
 
     if (!productSnapshot.exists()) continue;
 
     const product = productSnapshot.val();
+
+    const subtotal = product.price * item.quantity;
+
+    total += subtotal;
 
     cartContainer.innerHTML += `
     <div class="cart-item">
@@ -555,9 +577,9 @@ async function carregarCarrinho() {
           <button onclick="aumentarQuantidade(${item.productId})">+</button>
         </div>
 
-        <p>R$ ${(product.price * item.quantity).toFixed(2)}</p>
+        <p>R$ ${subtotal.toFixed(2)}</p>
 
-        <button onclick="removerProduto(${item.productId})">
+        <button onclick="removerProduto(${item.productId})" class="cart-remove">
           Remover
         </button>
 
@@ -565,7 +587,33 @@ async function carregarCarrinho() {
 
     </div>
     `;
+    cartTotal.innerHTML = `<p class="cart-total-title">Total</p> <p class="cart-total-price">R$ ${total.toFixed(2)}</p>`;
   }
+
 }
 
 carregarCarrinho();
+
+async function atualizarCarrinho() {
+  const cartCounter = document.querySelector("#cart-counter");
+
+  const session = JSON.parse(localStorage.getItem("session"));
+
+  const userId = session.userId;
+
+  const cartRef = ref(db, `carts/${userId}/items`);
+
+  const snapshot = await get(cartRef)
+
+  let quantidade;
+
+  if (snapshot.exists()) {
+    quantidade = snapshot.size
+
+    cartCounter.innerHTML = `
+      <p>${quantidade}</p>
+    `;
+  }
+}
+
+atualizarCarrinho();
