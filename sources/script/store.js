@@ -539,6 +539,7 @@ async function carregarCarrinho() {
 
   if (!cartSnapshot.exists()) {
     cartContainer.innerHTML = '<p class="cart-empty">Carrinho vazio.</p>';
+    cartTotal.innerHTML = '';
     return;
   }
 
