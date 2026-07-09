@@ -492,6 +492,24 @@ a {
 
 }
 
+#loading.loading {
+    width: 35px;
+    height: 35px;
+    border: 5px solid #d9d9d9;   /* Cor da borda */
+    border-top: 5px solid #123944; /* Parte destacada */
+    border-radius: 50%;
+    animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 #cart {
     position: fixed;
     right: -450px;
@@ -602,6 +620,10 @@ a {
     border-style: solid;
     border-color: #efe8de;
     border-radius: 0 10px 10px 0;
+}
+
+.cart-item.loading {
+    visibility: hidden;
 }
 
 .show-cart {

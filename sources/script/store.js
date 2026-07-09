@@ -520,6 +520,10 @@ window.removerProduto = removerProduto;
 
 async function carregarCarrinho() {
 
+  const loading = document.querySelector("#loading");
+  const cartContainer = document.getElementById("cart-items");
+  const cartTotal = document.getElementById("cart-total");
+
   const session = JSON.parse(localStorage.getItem("session"));
 
   if (!session) {
@@ -529,68 +533,93 @@ async function carregarCarrinho() {
 
   const userId = session.userId;
 
+  // Mostra o loading e esconde os itens
+  loading.classList.add("loading");
+  cartContainer.style.display = "none";
+
   const cartRef = ref(db, `carts/${userId}/items`);
   const cartSnapshot = await get(cartRef);
 
-  const cartContainer = document.getElementById("cart-items");
-  const cartTotal = document.getElementById("cart-total");
-
   cartContainer.innerHTML = "";
+  cartTotal.innerHTML = "";
 
   if (!cartSnapshot.exists()) {
     cartContainer.innerHTML = '<p class="cart-empty">Carrinho vazio.</p>';
-    cartTotal.innerHTML = '';
+
+    loading.classList.remove("loading");
+    cartContainer.style.display = "block";
     return;
   }
 
   const itens = cartSnapshot.val();
 
+  // Busca todos os produtos ao mesmo tempo
+  const produtos = await Promise.all(
+    Object.values(itens).map(async (item) => {
+
+      const productRef = ref(db, `products/${item.productId}`);
+      const productSnapshot = await get(productRef);
+
+      if (!productSnapshot.exists()) return null;
+
+      return {
+        item,
+        product: productSnapshot.val()
+      };
+    })
+  );
+
   let total = 0;
+  let html = "";
 
-  for (const itemId in itens) {
+  produtos.forEach(dado => {
 
-    const item = itens[itemId];
+    if (!dado) return;
 
-    const productRef = ref(db, `products/${item.productId}`);
-    const productSnapshot = await get(productRef);
-
-    if (!productSnapshot.exists()) continue;
-
-    const product = productSnapshot.val();
+    const { item, product } = dado;
 
     const subtotal = product.price * item.quantity;
-
     total += subtotal;
 
-    cartContainer.innerHTML += `
-    <div class="cart-item">
+    html += `
+      <div class="cart-item">
 
-      <img src="${product.image}" alt="${product.name}">
+        <img src="${product.image}" alt="${product.name}">
 
-      <div class="cart-info">
-        <h4>${product.name}</h4>
+        <div class="cart-info">
 
-        <div class="quantity-control">
-          <button onclick="diminuirQuantidade(${item.productId})">-</button>
+          <h4>${product.name}</h4>
 
-          <span>${item.quantity}</span>
+          <div class="quantity-control">
+            <button onclick="diminuirQuantidade(${item.productId})">-</button>
 
-          <button onclick="aumentarQuantidade(${item.productId})">+</button>
+            <span>${item.quantity}</span>
+
+            <button onclick="aumentarQuantidade(${item.productId})">+</button>
+          </div>
+
+          <p>R$ ${subtotal.toFixed(2)}</p>
+
+          <button onclick="removerProduto(${item.productId})" class="cart-remove">
+            Remover
+          </button>
+
         </div>
 
-        <p>R$ ${subtotal.toFixed(2)}</p>
-
-        <button onclick="removerProduto(${item.productId})" class="cart-remove">
-          Remover
-        </button>
-
       </div>
-
-    </div>
     `;
-    cartTotal.innerHTML = `<p class="cart-total-title">Total</p> <p class="cart-total-price">R$ ${total.toFixed(2)}</p>`;
-  }
+  });
 
+  cartContainer.innerHTML = html;
+
+  cartTotal.innerHTML = `
+    <p class="cart-total-title">Total</p>
+    <p class="cart-total-price">R$ ${total.toFixed(2)}</p>
+  `;
+
+  // Esconde o loading e mostra tudo de uma vez
+  loading.classList.remove("loading");
+  cartContainer.style.display = "block";
 }
 
 carregarCarrinho();
