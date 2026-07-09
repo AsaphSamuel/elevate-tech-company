@@ -514,6 +514,7 @@ a {
     z-index: 2  ;
     overflow-y: scroll;
     overflow-x: hidden;
+    scrollbar-width: none;
 }
 
 #cart.active {
@@ -527,6 +528,10 @@ a {
 
     color: #ebe7e0;
     font-size: 18px;
+}
+
+#cart-items {
+    padding-bottom: 30px;
 }
 
 .cart-item {
@@ -569,8 +574,10 @@ a {
 }
 
 #cart-total {
-    position: absolute;
-    bottom: 10vh;
+    position: relative;
+    bottom: 10px;
+
+    padding-bottom: 120px;
 
     display: flex;
     align-items: center;
@@ -587,7 +594,7 @@ a {
 
 .cart-total-price {
     position: relative;
-    right: 3px;
+    left: -8px;
     padding: 2px 20px 2px 12px;
 
     color: #efe8de;

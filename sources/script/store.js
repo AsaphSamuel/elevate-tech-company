@@ -614,6 +614,8 @@ async function atualizarCarrinho() {
     cartCounter.innerHTML = `
       <p>${quantidade}</p>
     `;
+  } else {
+    cartCounter.innerHTML = '';
   }
 }
 
