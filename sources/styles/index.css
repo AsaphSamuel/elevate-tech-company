@@ -1,3 +1,7 @@
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
 body {
     overflow-x: hidden;
     min-width: 100%;
@@ -651,6 +655,81 @@ a {
         width: 100%;
     }
 }
+
+#contato {
+    width: auto;
+    height: auto;
+}
+
+.contact-us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: #123944;
+}
+
+.dont-be-shy {
+    position: relative;
+    top: 75px;
+    
+    display: flex;
+    justify-content: space-between;
+    gap: 250px;
+    
+    width: calc(100vw - 350px);
+
+    margin-bottom: 50px;
+}
+
+.contact-us-text {
+    display: flex;
+    flex-direction: column;
+
+    width: 200px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.contact-form input {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #1d4f59;
+}
+
+.contact-input {
+    padding-left: 15px;
+    height: 30px;
+
+    outline: none;
+
+    background: #f1ece3;
+    border-radius: 8px;
+}
+
+.contact-input.message {
+    padding: 10px 0 145px 15px;
+}
+
+.contact-input.send {
+    position: relative;
+    top: 25px;
+
+    width: 750px;
+    height: 40px;
+
+    border: none;
+    color: #ebe7e0;
+    background: #123944;
+}
+
+/*S C R O L L   I N D I C A T O R*/
 .scroll-indicator {
     width: 35px;
     height: 35px;
@@ -709,6 +788,8 @@ a {
     pointer-events: none;
 }
 
+
+/*F O O T E R*/
 footer {
     background-color: #264f55;
     padding: 30px 0 60px 0;

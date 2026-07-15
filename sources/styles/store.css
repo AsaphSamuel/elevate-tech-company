@@ -134,14 +134,24 @@ a {
     .home-container {
         padding-top: 0;
     }
+    #cart {
+        top: 0;
+        height: 100vh;
+        z-index: 1000;
+    }
 }
 @media (min-aspect-ratio: 1/1) {
     .home-container {
         padding-top: 142px;
     }
+    #cart {
+        top: 142px;
+        height: calc(100vh - 142px);
+        z-index: 2;
+    }
 }
 
-@media (max-width: 810px){
+@media (max-aspect-ratio: 2.5/3){
     header {
         height: 225px;
         gap: 60px;
@@ -152,15 +162,23 @@ a {
     .navbar {
         padding-top: 170px;
     }
+    #cart {
+        width: 100vw;
+        right: -100vh;
+    }
 }
 
-@media (min-width: 811px){
+@media (min-aspect-ratio: 2.5/3){
     .about-us.container {
         height: 600px;
     }
     .header-logo {
         position: absolute;
         left: 5%;
+    }
+    #cart {
+        width: 450px;
+        right: -450px;
     }
 }
 
@@ -512,8 +530,6 @@ a {
 
 #cart {
     position: fixed;
-    right: -450px;
-    top: 142px;
 
     display: flex;
     flex-direction: column;
@@ -521,15 +537,12 @@ a {
 
     padding-top: 70px;
     
-    height: calc(100vh - 142px);
-    width: 450px;
     background: #1d4e59;
     
     box-shadow: 0 5px 15px rgba(0,0,0,.2);
     
-    transition: 0.3s ease;
+    transition: right 0.3s ease;
     
-    z-index: 2  ;
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: none;
