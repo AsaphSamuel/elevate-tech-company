@@ -524,6 +524,8 @@ async function carregarCarrinho() {
   const cartContainer = document.getElementById("cart-items");
   const cartTotal = document.getElementById("cart-total");
 
+  const finishBuyPrice = document.getElementById("finish-price");
+
   const session = JSON.parse(localStorage.getItem("session"));
 
   if (!session) {
@@ -542,6 +544,8 @@ async function carregarCarrinho() {
 
   cartContainer.innerHTML = "";
   cartTotal.innerHTML = "";
+
+  finishBuyPrice.innerHTML = "";
 
   if (!cartSnapshot.exists()) {
     cartContainer.innerHTML = '<p class="cart-empty">Carrinho vazio.</p>';
@@ -616,6 +620,8 @@ async function carregarCarrinho() {
     <p class="cart-total-title">Total</p>
     <p class="cart-total-price">R$ ${total.toFixed(2)}</p>
   `;
+
+  finishBuyPrice.innerHTML = `R$ ${total.toFixed(2)}`;
 
   // Esconde o loading e mostra tudo de uma vez
   loading.classList.remove("loading");

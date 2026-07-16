@@ -583,14 +583,15 @@ a {
     position: relative;
     bottom: 10px;
 
-    padding-bottom: 120px;
+    width: 75%;
 
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 .cart-total-title {
-    padding: 5px 20px;
+    padding: 5px 15%;
 
     color: #222;
 
@@ -601,7 +602,7 @@ a {
 .cart-total-price {
     position: relative;
     left: -8px;
-    padding: 2px 20px 2px 12px;
+    padding: 2px 18%;
 
     color: #efe8de;
 
@@ -612,6 +613,44 @@ a {
 
 .cart-item.loading {
     visibility: hidden;
+}
+
+#finish-buy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px 52px;
+
+    margin-bottom: 120px;
+
+    cursor: pointer;
+
+    color: #123944;
+    background: rgb(111, 196, 111);
+
+    border-radius: 12px;
+}
+
+.finish-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    height: 35px;
+
+} .finish-title span {
+
+    transform: scale(1.5);
+
+} 
+#finish-price {
+
+    margin: 0 0 10px;
+    height: 10px;
+
 }
 
 .show-cart {
