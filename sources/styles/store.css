@@ -193,6 +193,9 @@ a {
         position: absolute;
         left: 5%;
     }
+    .navbar-text {
+        display: none;
+    }
     .footer-container {
         flex-direction: column;
         justify-content: center;
@@ -265,34 +268,6 @@ a {
 .hero-content p{
     color:#d7e5e8;
     margin-bottom:30px;
-}
-
-.search-box{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-}
-
-.search-box input{
-    width:500px;
-    max-width:100%;
-    height:30px;
-    border:none;
-    border-style: none;
-    outline: none;
-    border-radius:10px 0 0 10px;
-    padding:0 15px;
-}
-
-.search-box button{
-    height:30px;
-    border:none;
-    border-radius:0 10px 10px 0;
-    padding:0 22px;
-    background:#d8c8b2;
-    color: #1d4e59;
-    cursor:pointer;
-    font-weight:600;
 }
 
 /* FILTROS */

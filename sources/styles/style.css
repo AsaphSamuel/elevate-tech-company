@@ -68,6 +68,7 @@ img.header-logo{
     height: calc(100% - 140px);
     border-radius: 0;
     max-height: 100%;
+    margin-bottom: 100px;
   }
   body{
     margin: 0 0 0 0;

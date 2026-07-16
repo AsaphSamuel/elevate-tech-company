@@ -145,6 +145,15 @@ a {
     .navbar {
         padding-top: 170px;
     }
+    .dont-be-shy {
+        font-size: larger;
+    }
+    .contact-input {
+        font-size: 18px;
+    }
+    .contact-input.send {
+        min-height: 50px;
+    }
 }
 
 @media (min-width: 811px){
@@ -154,6 +163,9 @@ a {
     .header-logo {
         position: absolute;
         left: 5%;
+    }
+    .contact-input.send {
+        min-height: 35px;
     }
 }
 
@@ -167,6 +179,9 @@ a {
     .header-logo {
         position: absolute;
         left: 5%;
+    }
+    .navbar-text {
+        display: none;
     }
     .footer-container {
         flex-direction: column;
