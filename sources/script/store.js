@@ -655,3 +655,12 @@ async function atualizarCarrinho() {
 }
 
 atualizarCarrinho();
+
+
+// ---------- FINALIZAR PAGAMENTO ----------
+
+document.getElementById("finish-buy").addEventListener("click", async () => {
+
+  window.location.href = 'payment.html';
+
+})

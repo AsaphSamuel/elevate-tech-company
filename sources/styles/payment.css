@@ -1,0 +1,365 @@
+:root {
+    --cream: #ebe7e0;
+    --cream-soft: #efe8de;
+    --teal-dark: #1d4e59;
+    --teal-darker: #123944;
+    --ink: #2b3a3e;
+    --ink-soft: #64717a;
+    --border: #d9d9d9;
+    --white: #ffffff;
+    --accent-focus: #255b68;
+    --radius: 18px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    background: var(--cream-soft);
+    color: var(--ink);
+}
+
+#back-button {
+    position: absolute;
+    left: 35px;
+    top: 210px;
+
+    cursor: pointer;
+} #back-button img {
+    max-width: 30px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--teal-darker);
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.logo span {
+    color: var(--teal-darker);
+}
+
+.logo small {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--ink-soft);
+    margin-left: 8px;
+    align-self: center;
+}
+
+.site-header nav {
+    display: flex;
+    gap: 40px;
+}
+
+.site-header nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.user-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: linear-gradient(135deg, #8b2635, #2b3a3e);
+}
+
+.user-chip {
+    cursor: pointer;
+}
+
+.summary-loading {
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding: 6px 0 18px;
+}
+
+.summary-empty {
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding: 6px 0 18px;
+}
+
+.submit-btn:disabled {
+    background: #a9b3ab;
+    cursor: not-allowed;
+}
+
+/* ---------- HERO BAND ---------- */
+.hero-band {
+    background: var(--teal-dark);
+    color: var(--white);
+    text-align: center;
+    padding: 48px 20px 56px;
+}
+
+.hero-band h1 {
+    margin: 0 0 10px;
+    font-size: 32px;
+}
+
+.hero-band p {
+    margin: 0;
+    opacity: 0.85;
+    font-size: 15px;
+}
+
+/* ---------- LAYOUT ---------- */
+.checkout-wrap {
+    max-width: 1040px;
+    margin: -30px auto 80px;
+    padding: 0 24px;
+}
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+@media (max-width: 800px) {
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- CARDS ---------- */
+.payment-card,
+.summary-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 32px;
+    box-shadow: 0 8px 24px rgba(31, 74, 76, 0.08);
+}
+
+.payment-card h2,
+.summary-card h2 {
+    margin: 0 0 20px;
+    font-size: 18px;
+    color: var(--teal-darker);
+}
+
+/* ---------- METHOD TOGGLE ---------- */
+.method-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 26px;
+    background: var(--cream-soft);
+    padding: 6px;
+    border-radius: 999px;
+    width: fit-content;
+}
+
+.method-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: transparent;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.method-btn img{
+    width: 25px;
+
+    transition: 0.2s ease;
+}
+
+.method-btn:hover {
+    color: var(--teal-darker);
+}
+
+.method-btn.active {
+    background: var(--teal-dark);
+    color: var(--white);
+}
+
+.method-btn.active img {
+    filter: invert();
+}
+
+/* ---------- FORM FIELDS ---------- */
+.fields-group {
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.fields-group[hidden] {
+    display: none;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.field-row {
+    display: flex;
+    gap: 16px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+input {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--cream-soft);
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input::placeholder {
+    color: #a3ab9e;
+}
+
+input:focus {
+    border-color: var(--accent-focus);
+    box-shadow: 0 0 0 3px rgba(60, 122, 125, 0.18);
+    background: var(--white);
+}
+
+.pix-note {
+    font-size: 13px;
+    color: var(--ink-soft);
+    background: var(--cream-soft);
+    border-radius: 8px;
+    padding: 14px 16px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ---------- SUBMIT ---------- */
+.submit-btn {
+    margin-top: 26px;
+    width: 100%;
+    padding: 15px;
+    background: var(--teal-dark);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.05s ease;
+}
+
+.submit-btn:hover {
+    background: var(--teal-darker);
+}
+
+.submit-btn:active {
+    transform: scale(0.99);
+}
+
+.secure-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 14px 0 0;
+    font-size: 12px;
+    color: var(--ink-soft);
+}
+
+/* ---------- SUMMARY ---------- */
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.summary-thumb {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    background-size: cover;
+}
+
+.thumb-1 {
+    background: linear-gradient(135deg, #1f4a4c, #2b3a3e);
+}
+
+.summary-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.summary-name {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.summary-desc {
+    font-size: 12px;
+    color: var(--ink-soft);
+}
+
+.summary-price {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.summary-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+}
+
+.summary-total {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--teal-darker);
+    margin-bottom: 0;
+}
