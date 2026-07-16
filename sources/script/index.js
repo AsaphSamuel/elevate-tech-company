@@ -194,7 +194,9 @@ window.addEventListener('scroll', () => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.clientHeight;
 
-    if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+    const offset = 70;
+
+    if (pageYOffset >= (sectionTop - sectionHeight / 3 - offset)) {
       current = section.getAttribute('id');
     }
 
@@ -395,6 +397,32 @@ document.querySelector("#logout").addEventListener("click", async () => {
   location.href = "index.html";
 });
 
+
+//CONTACT US SCROLL
+const contato = document.querySelector("#contact");
+
+window.addEventListener("scroll", () => {
+
+    const rect = contato.getBoundingClientRect();
+    const alturaTela = window.innerHeight;
+
+    // Distância em que a animação começa
+    const inicio = alturaTela * 0.9;
+
+    // Distância em que termina
+    const fim = alturaTela * 0.2;
+
+    let progresso = (inicio - rect.top) / (inicio - fim);
+
+    // Limita entre 0 e 1
+    progresso = Math.max(0, Math.min(1, progresso));
+
+    // De 150px até 0px
+    const deslocamento = 150 * (1 - progresso);
+
+    contato.style.transform = `translateY(${deslocamento}px)`;
+
+});
 
 //SCROLL INDICATOR
 const indicator = document.querySelector('.scroll-indicator');

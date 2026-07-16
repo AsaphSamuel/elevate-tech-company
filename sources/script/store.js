@@ -134,7 +134,7 @@ links.forEach(link => {
     const currentPage = window.location.pathname.split('/').pop();
 
     // HOME e ABOUT -> index.html
-    if ((targetId === 'home' || targetId === 'about') && currentPage !== 'index.html') {
+    if ((targetId === 'home' || targetId === 'about' || targetId === 'contact') && currentPage !== 'index.html') {
       window.location.href = `index.html#${targetId}`;
       return;
     }
