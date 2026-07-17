@@ -113,6 +113,6 @@ ambiente, dependências e como fazer o deploy — estão no
 
 <div align="center">
 
-Feito por **elevate# Technology Company**
+Feito por **Elevate Technology Company**
 
 </div>
