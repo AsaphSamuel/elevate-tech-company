@@ -555,6 +555,10 @@ a {
     transition: 0.2s;
 }
 
+.template-info a {
+    width: 100%;
+}
+
 .template-info button:hover {
     background-color: #1d4f59;
 }
