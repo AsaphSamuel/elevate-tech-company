@@ -518,12 +518,21 @@ window.aumentarQuantidade = aumentarQuantidade;
 window.diminuirQuantidade = diminuirQuantidade;
 window.removerProduto = removerProduto;
 
+// Elementos que devem sumir durante loading OU quando o carrinho está vazio
+function setResumoCarrinhoVisivel(visivel) {
+  const finishBuyBtn = document.getElementById("finish-buy");
+  const finishPrice = document.getElementById("finish-price");
+
+  const display = visivel ? "" : "none";
+  if (finishBuyBtn) finishBuyBtn.style.display = display;
+  if (finishPrice) finishPrice.style.display = display;
+}
+
 async function carregarCarrinho() {
 
   const loading = document.querySelector("#loading");
   const cartContainer = document.getElementById("cart-items");
   const cartTotal = document.getElementById("cart-total");
-
   const finishBuyPrice = document.getElementById("finish-price");
 
   const session = JSON.parse(localStorage.getItem("session"));
@@ -535,16 +544,16 @@ async function carregarCarrinho() {
 
   const userId = session.userId;
 
-  // Mostra o loading e esconde os itens
+  // Mostra o loading, esconde os itens e o resumo (botão + preço total)
   loading.classList.add("loading");
   cartContainer.style.display = "none";
+  setResumoCarrinhoVisivel(false);
 
   const cartRef = ref(db, `carts/${userId}/items`);
   const cartSnapshot = await get(cartRef);
 
   cartContainer.innerHTML = "";
   cartTotal.innerHTML = "";
-
   finishBuyPrice.innerHTML = "";
 
   if (!cartSnapshot.exists()) {
@@ -552,15 +561,14 @@ async function carregarCarrinho() {
 
     loading.classList.remove("loading");
     cartContainer.style.display = "block";
+    setResumoCarrinhoVisivel(false); // continua escondido: carrinho vazio
     return;
   }
 
   const itens = cartSnapshot.val();
 
-  // Busca todos os produtos ao mesmo tempo
   const produtos = await Promise.all(
     Object.values(itens).map(async (item) => {
-
       const productRef = ref(db, `products/${item.productId}`);
       const productSnapshot = await get(productRef);
 
@@ -577,7 +585,6 @@ async function carregarCarrinho() {
   let html = "";
 
   produtos.forEach(dado => {
-
     if (!dado) return;
 
     const { item, product } = dado;
@@ -587,34 +594,26 @@ async function carregarCarrinho() {
 
     html += `
       <div class="cart-item">
-
         <img src="${product.image}" alt="${product.name}">
-
         <div class="cart-info">
-
           <h4>${product.name}</h4>
-
           <div class="quantity-control">
             <button onclick="diminuirQuantidade(${item.productId})">-</button>
-
             <span>${item.quantity}</span>
-
             <button onclick="aumentarQuantidade(${item.productId})">+</button>
           </div>
-
           <p>R$ ${subtotal.toFixed(2)}</p>
-
           <button onclick="removerProduto(${item.productId})" class="cart-remove">
             Remover
           </button>
-
         </div>
-
       </div>
     `;
   });
 
   cartContainer.innerHTML = html;
+
+  const temItens = produtos.some(d => d !== null);
 
   cartTotal.innerHTML = `
     <p class="cart-total-title">Total</p>
@@ -623,9 +622,9 @@ async function carregarCarrinho() {
 
   finishBuyPrice.innerHTML = `R$ ${total.toFixed(2)}`;
 
-  // Esconde o loading e mostra tudo de uma vez
   loading.classList.remove("loading");
   cartContainer.style.display = "block";
+  setResumoCarrinhoVisivel(temItens); // só mostra se realmente sobrou item válido
 }
 
 carregarCarrinho();
