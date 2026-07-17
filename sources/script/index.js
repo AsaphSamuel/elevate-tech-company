@@ -398,6 +398,11 @@ document.querySelector("#logout").addEventListener("click", async () => {
 });
 
 
+//PRODUCT VIEW
+document.getElementById("product-view").addEventListener("click", async () => {
+  window.location.href = "store.html";
+})
+
 //CONTACT US SCROLL
 const contato = document.querySelector("#contact");
 

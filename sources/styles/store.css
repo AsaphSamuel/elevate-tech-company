@@ -166,6 +166,9 @@ a {
         width: 100vw;
         right: -100vh;
     }
+    .cart-total-price {
+        white-space: nowrap;
+    }
 }
 
 @media (min-aspect-ratio: 2.5/3){
