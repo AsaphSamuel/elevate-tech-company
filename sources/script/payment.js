@@ -169,7 +169,7 @@ async function carregarResumoPedido() {
 
         html += `
       <div class="summary-item">
-        <div class="summary-thumb" style="background-image:url('../${product.image}')"></div>
+        <div class="summary-thumb" style="background-image:url('${product.image}')"></div>
         <div class="summary-info">
           <span class="summary-name">${product.name}</span>
           <span class="summary-desc">Template · quantidade ${item.quantity}</span>
