@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>User - Elevate Technology</title>
+    <link rel="stylesheet" href="../sources/styles/style.css">
+    <link rel="stylesheet" href="../sources/styles/user.css">
+    <link rel="shortcut icon" href="../sources/images/icon3.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <img class="img header-logo"  src="../sources/images/ideograma-png.png" alt="ideograma-png">
+    </header>
+
+    <div class="container">
+
+        <img id="arrow" src="../sources/images/arrow-left.png" alt="">
+
+        <div class="login-area">
+
+
+            <div class="profile-image">
+                <img id="profilePreview" src="../sources/images/default-user.png" alt="">
+
+                <div id="pp-overlay" class="overlay">
+                    <img id="deleteProfile" src="../sources/images/garbage.png" alt="Delete" class="trash-icon">
+                </div>
+            </div>
+            
+            <div class="url subcontainer">
+                <h3 class="lbl user">Photo link</h3>
+                <input class="input image-link" type="text" placeholder="Image Link" id="photoUrl">
+            </div>
+
+            <div class="user subcontainer">
+                <h3 class="lbl user">User</h3>
+                <input class="input txt-user" type="text" id="txt-user" placeholder="username" maxlength="18">
+            </div>
+
+            <div class="email subcontainer">
+                <h3 class="lbl user">Email</h3>
+                <div class="email-container-input">
+                    <input class="input txt-email" type="email" id="email" placeholder="exemple@gmail.com" maxlength="28" disabled>
+                    <img src="../sources/images/download.png" alt="locked" class="padlock">
+                </div>
+            </div>
+
+            <h3 class="lbl error" id="lbl-error"></h3>
+            
+            <button class="btn-login" id="btn-sigin">SAVE</button>
+
+            <a class="lbl logout" id="logout" href="">Log out</a>
+
+        </div>
+
+    </div>
+
+    <script src="../sources/script/user.js" type="module"></script>
+</body>
+</html>
