@@ -1,3 +1,16 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  /* trava a cor de fundo usando um box-shadow enorme por dentro do input,
+     já que 'background-color' sozinho o navegador ignora */
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #000000 !important; /* cor do texto */
+  caret-color: #000000; /* cor do cursor piscando */
+  transition: background-color 9999s ease-in-out 0s; /* atraso "infinito" pra troca de fundo não aparecer */
+}
+
 :root {
     --cream: #ebe7e0;
     --cream-soft: #efe8de;

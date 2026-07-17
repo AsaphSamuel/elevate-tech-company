@@ -332,7 +332,7 @@ form.addEventListener("submit", async (event) => {
 
     } catch (error) {
         console.error(error);
-        alert("Não foi possível concluir o pedido. Tente novamente.");
+        // alert("Não foi possível concluir o pedido. Tente novamente.");
         submitBtn.disabled = false;
         atualizarTextoBotao();
     }
